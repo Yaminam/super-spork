@@ -1,0 +1,117 @@
+.heroSec {
+  padding-top: clamp(2rem, 4vw, 3rem);
+}
+.heroFrame {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  border-radius: var(--ll-radius);
+  overflow: hidden;
+  border: 1px solid var(--ll-line-soft);
+  background: var(--ll-bg-2);
+}
+.heroFrame img {
+  object-fit: cover;
+}
+
+.timelineSec {
+  background: linear-gradient(180deg, var(--ll-bg) 0%, #07070b 100%);
+  overflow: hidden;
+}
+
+/* Scroll-driven illuminated timeline */
+.track {
+  position: relative;
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+}
+/* base rail + the gold beam that fills on scroll */
+.rail,
+.railFill {
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  left: 14px;
+}
+.rail { background: var(--ll-line); }
+.railFill {
+  transform-origin: top center;
+  background: linear-gradient(180deg, var(--ll-gold-light), var(--ll-gold));
+  box-shadow: 0 0 14px rgba(201, 169, 110, 0.7);
+}
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.beat {
+  position: relative;
+  padding-left: clamp(2.5rem, 5vw, 3.25rem);
+  padding-block: clamp(1.25rem, 3vw, 2rem);
+}
+.node {
+  position: absolute;
+  top: 1.55rem;
+  left: 8px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--ll-gold-light), var(--ll-gold));
+  box-shadow: 0 0 0 4px rgba(5, 5, 6, 1), 0 0 16px rgba(201, 169, 110, 0.85);
+}
+.card { min-width: 0; }
+.year {
+  display: block;
+  font-family: var(--ll-serif);
+  font-weight: 300;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  letter-spacing: -0.02em;
+  color: var(--ll-gold);
+  line-height: 0.95;
+  margin-bottom: 0.5rem;
+}
+.beatTitle {
+  font-family: var(--ll-serif);
+  font-weight: 300;
+  font-size: var(--ll-text-2xl);
+  color: var(--ll-ivory);
+  margin-bottom: 0.5rem;
+}
+.beatText {
+  font-size: var(--ll-text-base);
+  line-height: 1.7;
+  color: var(--ll-text-muted);
+  max-width: 48ch;
+}
+.beatImg {
+  position: relative;
+  display: block;
+  margin-top: 1.25rem;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--ll-radius);
+  overflow: hidden;
+  border: 1px solid var(--ll-line-soft);
+  background: var(--ll-bg-2);
+}
+.beatImg img {
+  object-fit: cover;
+  transition: transform var(--ll-dur-slow) var(--ll-ease);
+}
+.beat:hover .beatImg img { transform: scale(1.04); }
+
+/* Centered, alternating timeline on larger screens */
+@media (min-width: 880px) {
+  .rail,
+  .railFill { left: calc(50% - 1px); }
+  .beat { width: 50%; padding-left: 0; padding-block: clamp(1.5rem, 3vw, 2.5rem); }
+  .left { left: 0; padding-right: clamp(2.5rem, 4vw, 4rem); text-align: right; }
+  .right { left: 50%; padding-left: clamp(2.5rem, 4vw, 4rem); text-align: left; }
+  .left .node { left: auto; right: -7px; }
+  .right .node { left: -7px; }
+  .left .beatText { margin-left: auto; }
+  .left .beatImg { margin-left: auto; }
+}

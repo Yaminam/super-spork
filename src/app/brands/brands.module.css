@@ -1,0 +1,260 @@
+.featured {
+  list-style: none;
+  margin: 0 0 clamp(3rem, 6vw, 5rem);
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+.feature {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--ll-radius);
+  overflow: hidden;
+  border: 1px solid var(--ll-line-soft);
+}
+.featImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ll-ease);
+}
+.feature:hover .featImg { transform: scale(1.05); }
+.featShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.78), transparent 55%);
+}
+.featMeta {
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.featLogo {
+  height: 30px;
+  width: auto;
+  max-width: 70%;
+  object-fit: contain;
+  object-position: left;
+  filter: brightness(0) invert(1);
+}
+.featName {
+  font-family: var(--ll-serif);
+  font-size: var(--ll-text-2xl);
+  font-weight: 300;
+  color: var(--ll-ivory);
+}
+.featCat {
+  font-size: var(--ll-text-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ll-gold);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.chip {
+  font-size: var(--ll-text-xs);
+  letter-spacing: 0.04em;
+  color: var(--ll-text-muted);
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--ll-line);
+  border-radius: 999px;
+  transition: color var(--ll-dur) var(--ll-ease-std), border-color var(--ll-dur) var(--ll-ease-std), background-color var(--ll-dur) var(--ll-ease-std);
+}
+.chip:hover {
+  color: var(--ll-ivory);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.chipActive {
+  color: var(--ll-bg);
+  background: var(--ll-gold);
+  border-color: var(--ll-gold);
+}
+
+.wall {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(0.5rem, 1.2vw, 1rem);
+}
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 4 / 5;
+  background: #07070b;
+  border-radius: var(--ll-radius);
+  border: 1px solid var(--ll-line-soft);
+  overflow: hidden;
+  transition: border-color var(--ll-dur) var(--ll-ease-std);
+}
+.tile:hover { border-color: rgba(201, 169, 110, 0.4); }
+.tileMedia {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  padding: clamp(1rem, 2vw, 1.75rem);
+  background: radial-gradient(80% 80% at 50% 30%, rgba(201, 169, 110, 0.08), transparent 70%), #08080c;
+}
+.tileLogo {
+  object-fit: contain;
+  object-position: center;
+  filter: brightness(0) invert(1);
+  opacity: 0.82;
+  transition: opacity var(--ll-dur) var(--ll-ease-std), transform var(--ll-dur) var(--ll-ease);
+}
+.tile:hover .tileLogo { opacity: 1; transform: translateY(-4px); }
+.tileText {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  font-family: var(--ll-serif);
+  font-size: var(--ll-text-lg);
+  color: var(--ll-ivory);
+}
+.tileFallback {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 100% at 50% 0%, #14100c, #050506 70%);
+}
+.tileMeta {
+  padding: 0 1.25rem 1.25rem;
+  text-align: center;
+}
+.tileName {
+  font-family: var(--ll-serif);
+  font-weight: 300;
+  font-size: var(--ll-text-lg);
+  color: var(--ll-ivory);
+}
+.tileCat {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ll-gold);
+  opacity: 0.8;
+}
+
+.count {
+  margin-top: 1.5rem;
+  font-family: var(--ll-mono);
+  font-size: var(--ll-text-xs);
+  letter-spacing: 0.04em;
+  color: var(--ll-text-faint);
+}
+
+@media (min-width: 560px) {
+  .wall { grid-template-columns: repeat(3, 1fr); }
+  .featured { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1024px) {
+  .wall { grid-template-columns: repeat(5, 1fr); }
+}
+
+/* Corporate portfolio (India-first) */
+.noteSec { padding-top: 0; }
+.note {
+  max-width: 64ch;
+  padding: 1rem 1.25rem;
+  border-left: 1px solid var(--ll-gold);
+  font-size: var(--ll-text-sm);
+  line-height: 1.7;
+  color: var(--ll-text-muted);
+  font-style: italic;
+}
+.portfolioSec { border-top: 1px solid var(--ll-line-soft); }
+.wallSec { border-top: 1px solid var(--ll-line-soft); }
+.h2 {
+  margin-top: 1.25rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  font-size: var(--ll-text-3xl);
+  color: var(--ll-ivory);
+  max-width: 20ch;
+}
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ll-line-soft);
+  border-radius: var(--ll-radius);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: var(--ll-bg-2);
+  height: 100%;
+  transition: border-color var(--ll-dur) var(--ll-ease-std), transform var(--ll-dur) var(--ll-ease-std), background-color var(--ll-dur) var(--ll-ease-std);
+}
+.card:hover { border-color: rgba(201, 169, 110, 0.45); transform: translateY(-3px); background: var(--ll-surface); }
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+  font-size: var(--ll-text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ll-gold);
+  transition: gap var(--ll-dur) var(--ll-ease);
+}
+.card:hover .cardLink { gap: 0.8rem; }
+.cardTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.cat {
+  font-size: var(--ll-text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ll-gold);
+}
+.origin {
+  font-size: var(--ll-text-xs);
+  letter-spacing: 0.06em;
+  color: var(--ll-text-faint);
+}
+.name {
+  font-family: var(--ll-serif);
+  font-weight: 300;
+  font-size: var(--ll-text-2xl);
+  color: var(--ll-ivory);
+  margin-bottom: 0.6rem;
+}
+.text {
+  font-size: var(--ll-text-base);
+  line-height: 1.7;
+  color: var(--ll-text-muted);
+  max-width: 48ch;
+  flex: 1;
+}
+@media (min-width: 620px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 960px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}

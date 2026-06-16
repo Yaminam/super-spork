@@ -1,0 +1,80 @@
+.page { background: var(--ll-bg); }
+
+.sec { }
+.lead {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+.leadLeft { min-width: 0; }
+.leadRight { min-width: 0; }
+.statement {
+  margin-top: 1.25rem;
+  font-size: var(--ll-text-2xl);
+  color: var(--ll-ivory);
+  max-width: 20ch;
+}
+.body {
+  font-size: var(--ll-text-lg);
+  line-height: 1.8;
+  color: var(--ll-text-muted);
+  max-width: 56ch;
+}
+.body + .body { margin-top: 1.25rem; }
+@media (min-width: 880px) {
+  .lead { grid-template-columns: 1.1fr 0.9fr; }
+}
+
+.h2 {
+  margin-top: 1.25rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  font-size: var(--ll-text-3xl);
+  color: var(--ll-ivory);
+  max-width: 22ch;
+}
+
+/* What we stand for */
+.valuesSec { border-top: 1px solid var(--ll-line-soft); background: var(--ll-bg-2); }
+.cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: clamp(1.25rem, 2.5vw, 2rem); }
+.card { border: 1px solid var(--ll-line-soft); border-radius: var(--ll-radius); padding: clamp(1.5rem, 3vw, 2.25rem); background: var(--ll-bg); transition: border-color var(--ll-dur) var(--ll-ease-std); }
+.card:hover { border-color: rgba(201, 169, 110, 0.4); }
+.cardName { font-family: var(--ll-serif); font-weight: 300; font-size: var(--ll-text-2xl); color: var(--ll-ivory); margin-bottom: 0.6rem; }
+.cardText { font-size: var(--ll-text-base); line-height: 1.7; color: var(--ll-text-muted); max-width: 46ch; }
+
+/* How we operate */
+.opsSec { border-top: 1px solid var(--ll-line-soft); }
+.opsList { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: clamp(1.25rem, 2.5vw, 2rem); }
+.op { border-left: 1px solid var(--ll-gold); padding-left: clamp(1rem, 2vw, 1.5rem); }
+.opName { font-family: var(--ll-serif); font-weight: 300; font-size: var(--ll-text-xl); color: var(--ll-ivory); margin-bottom: 0.5rem; }
+.opText { font-size: var(--ll-text-base); line-height: 1.7; color: var(--ll-text-muted); max-width: 48ch; }
+
+/* Stats band */
+.statsBand { border-block: 1px solid var(--ll-line-soft); background: var(--ll-bg-2); padding-block: clamp(2.5rem, 5vw, 4rem); }
+.statsRow { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1.5rem, 4vw, 3rem); }
+.stat { display: flex; flex-direction: column; gap: 0.5rem; }
+.statValue { font-family: var(--ll-serif); font-weight: 300; font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--ll-ivory); line-height: 1.05; }
+.statLabel { font-size: var(--ll-text-xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ll-gold); }
+
+/* Timeline */
+.storySec { border-top: 1px solid var(--ll-line-soft); }
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); }
+.beat { display: grid; grid-template-columns: auto 1fr; gap: 1rem 1.5rem; align-items: start; }
+.beatYear { font-family: var(--ll-serif); font-weight: 300; font-size: var(--ll-text-xl); color: var(--ll-gold); min-width: 5ch; }
+.beatRail { width: 1px; height: 100%; background: var(--ll-line); justify-self: center; grid-row: 1 / 3; display: none; }
+.beatText { font-size: var(--ll-text-base); line-height: 1.7; color: var(--ll-text-muted); max-width: 60ch; }
+
+/* Explore */
+.exploreSec { border-top: 1px solid var(--ll-line-soft); background: linear-gradient(180deg, var(--ll-bg) 0%, #0a0a0e 100%); }
+.explore { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: clamp(0.75rem, 1.5vw, 1rem); }
+.exploreCard { display: flex; flex-direction: column; gap: 0.4rem; padding: clamp(1.25rem, 2.5vw, 1.75rem); border: 1px solid var(--ll-line-soft); border-radius: var(--ll-radius); background: var(--ll-bg-2); transition: border-color var(--ll-dur) var(--ll-ease-std), transform var(--ll-dur) var(--ll-ease-std); }
+.exploreCard:hover { border-color: rgba(201, 169, 110, 0.4); transform: translateY(-2px); }
+.exploreLabel { font-family: var(--ll-serif); font-size: var(--ll-text-xl); color: var(--ll-ivory); }
+.exploreNote { font-size: var(--ll-text-sm); color: var(--ll-text-muted); }
+
+@media (min-width: 640px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .opsList { grid-template-columns: repeat(2, 1fr); }
+  .statsRow { grid-template-columns: repeat(4, 1fr); }
+  .explore { grid-template-columns: repeat(2, 1fr); }
+}

@@ -1,0 +1,68 @@
+/**
+ * Liquid Light, design tokens.
+ * Near-black ground, champagne/gold as the only warm accent,
+ * each brand keyed to a single restrained liquid hue.
+ */
+:root {
+  /* Ground & surfaces */
+  --ll-bg: #050506;
+  --ll-bg-2: #0a0a0e;
+  --ll-surface: #101016;
+  --ll-line: rgba(255, 255, 255, 0.1);
+  --ll-line-soft: rgba(255, 255, 255, 0.06);
+
+  /* Light */
+  --ll-ivory: #f5f1e6;
+  --ll-text: rgba(245, 241, 230, 0.92);
+  --ll-text-muted: rgba(245, 241, 230, 0.62);
+  --ll-text-faint: rgba(245, 241, 230, 0.56);
+
+  /* Champagne / gold accent */
+  --ll-gold: #c9a96e;
+  --ll-gold-light: #e4d4a8;
+
+  /* Liquid hues (per spirit family) */
+  --ll-amber: #c87a2c;
+  --ll-clear: #cfe0ea;
+  --ll-rose: #e6a6a0;
+  --ll-green: #8fae6a;
+  --ll-copper: #b5683a;
+
+  /* Type */
+  --ll-serif: "Cormorant Garamond", "Canela", Georgia, serif;
+  --ll-sans: "Inter", "Neue Haas Grotesk", system-ui, sans-serif;
+  --ll-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  /* Fluid type scale */
+  --ll-text-xs: clamp(0.7rem, 0.4vw + 0.6rem, 0.78rem);
+  --ll-text-sm: clamp(0.8rem, 0.4vw + 0.7rem, 0.9rem);
+  --ll-text-base: clamp(0.95rem, 0.4vw + 0.8rem, 1.05rem);
+  --ll-text-lg: clamp(1.1rem, 0.8vw + 0.8rem, 1.4rem);
+  --ll-text-xl: clamp(1.4rem, 1.5vw + 0.9rem, 2rem);
+  --ll-text-2xl: clamp(1.8rem, 2.5vw + 1rem, 2.75rem);
+  --ll-text-3xl: clamp(2.2rem, 4vw + 1rem, 4rem);
+  --ll-text-hero: clamp(2.8rem, 8vw + 1rem, 8rem);
+
+  /* Spacing */
+  --ll-gutter: clamp(1.5rem, 5vw, 6rem);
+  --ll-max: 1440px;
+  --ll-section: clamp(3.25rem, 6vw, 6.5rem);
+
+  /* Motion, quiet luxury */
+  --ll-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ll-ease-std: cubic-bezier(0.25, 0, 0, 1);
+  --ll-dur: 600ms;
+  --ll-dur-slow: 1000ms;
+
+  /* Radius / z */
+  --ll-radius: 6px;
+  --ll-z-nav: 200;
+  --ll-z-overlay: 400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ll-dur: 0ms;
+    --ll-dur-slow: 0ms;
+  }
+}

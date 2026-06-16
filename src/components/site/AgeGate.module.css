@@ -1,0 +1,84 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: var(--ll-gutter);
+  background: rgba(3, 3, 5, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  animation: fade var(--ll-dur) var(--ll-ease);
+}
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.panel {
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+  border: 1px solid var(--ll-line);
+  border-radius: var(--ll-radius);
+  background: radial-gradient(120% 120% at 50% 0%, #0c0c12, var(--ll-bg) 70%);
+  padding: clamp(2rem, 5vw, 3.5rem);
+}
+.kicker {
+  font-size: var(--ll-text-xs);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ll-gold);
+}
+.title {
+  margin-top: 1rem;
+  font-size: var(--ll-text-2xl);
+  color: var(--ll-ivory);
+}
+.body {
+  margin-top: 1.1rem;
+  font-size: var(--ll-text-base);
+  line-height: 1.7;
+  color: var(--ll-text-muted);
+  max-width: 42ch;
+  margin-inline: auto;
+}
+.actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.primary {
+  padding: 0.9rem 1.4rem;
+  border-radius: 999px;
+  background: var(--ll-gold);
+  color: var(--ll-bg);
+  font-size: var(--ll-text-sm);
+  letter-spacing: 0.02em;
+  transition: background-color var(--ll-dur) var(--ll-ease-std), transform var(--ll-dur) var(--ll-ease-std);
+}
+.primary:hover {
+  background: var(--ll-gold-light);
+  transform: translateY(-1px);
+}
+.ghost {
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--ll-line);
+  color: var(--ll-text-muted);
+  font-size: var(--ll-text-sm);
+  transition: border-color var(--ll-dur) var(--ll-ease-std), color var(--ll-dur) var(--ll-ease-std);
+}
+.ghost:hover {
+  border-color: var(--ll-gold);
+  color: var(--ll-ivory);
+}
+.note {
+  margin-top: 1.5rem;
+  font-size: var(--ll-text-xs);
+  letter-spacing: 0.08em;
+  color: var(--ll-text-faint);
+}
+@media (min-width: 540px) {
+  .actions { flex-direction: row; justify-content: center; }
+}

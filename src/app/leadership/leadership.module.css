@@ -1,0 +1,91 @@
+.page { background: var(--ll-bg); }
+
+.h2 {
+  margin-top: 1.25rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  font-size: var(--ll-text-3xl);
+  color: var(--ll-ivory);
+  max-width: 20ch;
+}
+
+.people {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+.person {
+  border: 1px solid var(--ll-line-soft);
+  border-radius: var(--ll-radius);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--ll-bg-2);
+  transition: border-color var(--ll-dur) var(--ll-ease-std);
+}
+.person:hover { border-color: rgba(201, 169, 110, 0.4); }
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin-bottom: 1.25rem;
+  font-family: var(--ll-serif);
+  font-size: var(--ll-text-lg);
+  color: var(--ll-gold);
+  background: radial-gradient(circle at 35% 30%, rgba(201, 169, 110, 0.22), rgba(201, 169, 110, 0.05));
+  border: 1px solid var(--ll-line);
+}
+.personName {
+  font-family: var(--ll-serif);
+  font-weight: 300;
+  font-size: var(--ll-text-xl);
+  color: var(--ll-ivory);
+  margin-bottom: 0.3rem;
+}
+.personRole {
+  font-size: var(--ll-text-sm);
+  letter-spacing: 0.04em;
+  color: var(--ll-text-muted);
+}
+.disclaimer {
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  max-width: 60ch;
+  font-size: var(--ll-text-sm);
+  line-height: 1.7;
+  color: var(--ll-text-faint);
+  font-style: italic;
+}
+
+.govSec { border-top: 1px solid var(--ll-line-soft); background: var(--ll-bg-2); }
+.pillars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+.pillar {
+  border-left: 1px solid var(--ll-gold);
+  padding-left: clamp(1rem, 2vw, 1.5rem);
+}
+.pillarName {
+  font-family: var(--ll-serif);
+  font-weight: 300;
+  font-size: var(--ll-text-2xl);
+  color: var(--ll-ivory);
+  margin-bottom: 0.6rem;
+}
+.pillarText {
+  font-size: var(--ll-text-base);
+  line-height: 1.7;
+  color: var(--ll-text-muted);
+  max-width: 50ch;
+}
+
+@media (min-width: 640px) {
+  .people { grid-template-columns: repeat(3, 1fr); }
+  .pillars { grid-template-columns: repeat(2, 1fr); }
+}

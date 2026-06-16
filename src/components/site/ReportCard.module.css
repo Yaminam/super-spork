@@ -1,0 +1,64 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border: 1px solid var(--ll-line-soft);
+  border-radius: var(--ll-radius);
+  background: var(--ll-bg-2);
+  transition: border-color var(--ll-dur) var(--ll-ease-std);
+}
+.card:hover { border-color: rgba(201, 169, 110, 0.4); }
+.name {
+  font-family: var(--ll-serif);
+  font-weight: 300;
+  font-size: var(--ll-text-xl);
+  color: var(--ll-ivory);
+  line-height: 1.2;
+}
+.text {
+  margin-top: 0.75rem;
+  font-size: var(--ll-text-sm);
+  line-height: 1.65;
+  color: var(--ll-text-muted);
+}
+.media {
+  position: relative;
+  display: block;
+  margin-top: 1.25rem;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--ll-radius);
+  overflow: hidden;
+  border: 1px solid var(--ll-line-soft);
+  background: var(--ll-bg);
+}
+.media img {
+  object-fit: cover;
+  transition: transform var(--ll-dur-slow) var(--ll-ease);
+}
+.card:hover .media img { transform: scale(1.05); }
+.download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1.25rem;
+  align-self: flex-start;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--ll-line);
+  border-radius: 999px;
+  font-size: var(--ll-text-sm);
+  color: var(--ll-ivory);
+  transition: border-color var(--ll-dur) var(--ll-ease-std), background-color var(--ll-dur) var(--ll-ease-std);
+}
+.download:hover { border-color: var(--ll-gold); background: rgba(201, 169, 110, 0.08); }
+.pdfIcon {
+  font-family: var(--ll-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  color: var(--ll-bg);
+  background: var(--ll-gold);
+  padding: 0.25rem 0.45rem;
+  border-radius: 3px;
+}
+.size { font-family: var(--ll-mono); font-size: var(--ll-text-xs); color: var(--ll-text-faint); }
