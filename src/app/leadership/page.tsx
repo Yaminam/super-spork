@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageIntro from "@/components/site/PageIntro";
+import PhotoBreak from "@/components/site/PhotoBreak";
 import Reveal from "@/components/site/Reveal";
 import Faq from "@/components/site/Faq";
 import { JsonLd, breadcrumbSchema, webPageSchema, leadershipSchema } from "@/lib/seo/jsonld";
@@ -55,6 +56,13 @@ export default function LeadershipPage() {
           </Reveal>
         </div>
       </section>
+
+      <PhotoBreak
+        src="/images/pernod/17-the-island_exterior_2_2880x1234.jpg"
+        eyebrow="Governance"
+        caption="Run to a global standard, governed for scrutiny."
+        alt="The Island campus"
+      />
 
       {/* Governance pillars */}
       <section className={`ll-section ${styles.govSec}`}>

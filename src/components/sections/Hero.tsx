@@ -52,7 +52,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: B + 1.35, ease: EASE }}
         >
-          <Magnetic><Link href="/brands" className={styles.ctaPrimary}>Explore the brands</Link></Magnetic>
+          <Magnetic><Link href="/brands" className={styles.ctaPrimary}>Explore our brands</Link></Magnetic>
           <Magnetic><Link href="/group/our-history" className={styles.ctaGhost}>Our story <span aria-hidden>→</span></Link></Magnetic>
         </motion.div>
       </div>

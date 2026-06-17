@@ -205,13 +205,13 @@ export function ClosingCta() {
           viewport={VIEW}
           transition={{ duration: 1.2, ease: EASE }}
         >
-          Let’s raise a glass.
+          Let’s raise a toast.
         </motion.h2>
         <Reveal delay={0.1}><p className={s.closeLede}>Media, investors, partners and talent, all welcome.</p></Reveal>
         <Reveal delay={0.15}>
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
             <Magnetic><Link href="/contact" className={s.cta}>Contact us</Link></Magnetic>
-            <Magnetic><Link href="/brands" className={s.ctaGhost}>Explore the brands <span aria-hidden>→</span></Link></Magnetic>
+            <Magnetic><Link href="/brands" className={s.ctaGhost}>Explore our brands <span aria-hidden>→</span></Link></Magnetic>
           </div>
         </Reveal>
       </div>

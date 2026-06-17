@@ -5,6 +5,7 @@ import Reveal from "@/components/site/Reveal";
 import Faq from "@/components/site/Faq";
 import CountUp from "@/components/site/CountUp";
 import Marquee from "@/components/site/Marquee";
+import PhotoBreak from "@/components/site/PhotoBreak";
 import { JsonLd, breadcrumbSchema, webPageSchema } from "@/lib/seo/jsonld";
 import { PAGES } from "@/content/pages";
 import {
@@ -135,6 +136,13 @@ export default function SustainabilityPage() {
           </div>
         </div>
       </section>
+
+      <PhotoBreak
+        src="/images/pernod/28-nurturing_terroir1440x1080.jpg"
+        eyebrow="Nurturing terroir"
+        caption="From the soil to the served glass, made responsibly."
+        alt="Vineyard terroir"
+      />
 
       {/* Statement */}
       <section className={`ll-section ${styles.statementSec}`}>

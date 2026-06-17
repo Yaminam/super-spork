@@ -10,6 +10,7 @@ import { JsonLd, breadcrumbSchema, webPageSchema } from "@/lib/seo/jsonld";
 import Faq from "@/components/site/Faq";
 import CountUp from "@/components/site/CountUp";
 import ReportCard from "@/components/site/ReportCard";
+import PhotoBreak from "@/components/site/PhotoBreak";
 import styles from "./investors.module.css";
 
 const page = PAGES.investors;
@@ -110,6 +111,13 @@ export default function InvestorsPage() {
           </Reveal>
         </div>
       </section>
+
+      <PhotoBreak
+        src="/images/pernod/21-maison_martell_interior_2880x1234.jpg"
+        eyebrow="Long-term value"
+        caption="Premiumisation, built for the decades ahead."
+        alt="Maison interior"
+      />
 
       {/* Reports */}
       {DOCUMENTS.length > 0 && (

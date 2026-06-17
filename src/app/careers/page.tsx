@@ -4,6 +4,7 @@ import Image from "next/image";
 import Reveal from "@/components/site/Reveal";
 import Faq from "@/components/site/Faq";
 import Marquee from "@/components/site/Marquee";
+import PhotoBreak from "@/components/site/PhotoBreak";
 import { JsonLd, breadcrumbSchema, webPageSchema } from "@/lib/seo/jsonld";
 import { PAGES } from "@/content/pages";
 import { EMPLOYER_PILLARS, CAREER_AREAS, CAREERS_FAQS } from "@/content/india";
@@ -104,6 +105,13 @@ export default function CareersPage() {
           </ul>
         </div>
       </section>
+
+      <PhotoBreak
+        src="/images/pernod/23-originalsizejpeg-employer_brand_the_island_2023_7.jpg"
+        eyebrow="Life here"
+        caption="A place to grow, with brands worth building."
+        alt="The workplace"
+      />
 
       {band && (
         <section className={styles.bandSec}>

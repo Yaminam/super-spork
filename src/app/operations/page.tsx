@@ -5,6 +5,7 @@ import Reveal from "@/components/site/Reveal";
 import Faq from "@/components/site/Faq";
 import CountUp from "@/components/site/CountUp";
 import Marquee from "@/components/site/Marquee";
+import PhotoBreak from "@/components/site/PhotoBreak";
 import { JsonLd, breadcrumbSchema, webPageSchema } from "@/lib/seo/jsonld";
 import { OPERATIONS, INDIA_STATS, OPERATIONS_FAQS } from "@/content/india";
 import { absoluteUrl } from "@/lib/site-config";
@@ -74,6 +75,13 @@ export default function OperationsPage() {
           </ol>
         </div>
       </section>
+
+      <PhotoBreak
+        src="/images/pernod/33-the_glenlivet_distillery.jpg"
+        eyebrow="The make"
+        caption="From distillery to bottling, quality at every step."
+        alt="Distillery"
+      />
 
       {/* Kinetic footprint band */}
       <Marquee items={["Gurugram", "Nashik", "Behror", "30+ bottling plants", "Agri-sourcing", "Made in India"]} />
