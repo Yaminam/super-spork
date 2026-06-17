@@ -14,40 +14,33 @@ export const metadata: Metadata = {
   alternates: { canonical: "/group/our-history" },
 };
 
-const MILESTONES: { year: string; title: string; text: string }[] = [
-  { year: "1715", title: "Martell", text: "Maison Martell is founded in Cognac, one of the oldest of the great cognac houses." },
-  { year: "1780", title: "Jameson", text: "John Jameson establishes his Dublin distillery, and Irish whiskey enters the house's future." },
+const MILESTONES: { year: string; title: string; text: string; img?: string }[] = [
+  { year: "1715", title: "Martell", text: "Maison Martell is founded in Cognac, one of the oldest of the great cognac houses.", img: "/images/pernod/21-maison_martell_interior_2880x1234.jpg" },
+  { year: "1780", title: "Jameson", text: "John Jameson establishes his Dublin distillery, and Irish whiskey enters the house's future.", img: "/images/pernod/27-jameson_distillery_bow_st_bar.jpg" },
   { year: "1805", title: "The lineage begins", text: "Maison Pernod opens in France. The craft and the name that will anchor the house enter the world." },
-  { year: "1811", title: "Perrier-Jouët", text: "The champagne house is founded in Épernay, a name still poured at the finest tables." },
-  { year: "1824", title: "The Glenlivet", text: "Licensed in Speyside, it becomes one of the defining single malt Scotch whiskies." },
+  { year: "1811", title: "Perrier-Jouët", text: "The champagne house is founded in Épernay, a name still poured at the finest tables.", img: "/images/pernod/32-maison_belle_epoque.jpg" },
+  { year: "1824", title: "The Glenlivet", text: "Licensed in Speyside, it becomes one of the defining single malt Scotch whiskies.", img: "/images/pernod/33-the_glenlivet_distillery.jpg" },
   { year: "1827", title: "Ballantine's", text: "George Ballantine begins blending in Edinburgh, building a Scotch loved worldwide." },
-  { year: "1863", title: "Beefeater", text: "The classic London Dry gin is established, and goes on to travel the world." },
-  { year: "1909", title: "Chivas Regal", text: "Chivas Brothers releases Chivas Regal, a benchmark of aged, blended Scotch." },
-  { year: "1934", title: "Havana Club", text: "The Cuban rum is founded, later a global icon of the category." },
+  { year: "1863", title: "Beefeater", text: "The classic London Dry gin is established, and goes on to travel the world.", img: "/images/brands/beefeater/26-brand-beefeater-24-lifestyle-original-jp.jpg" },
+  { year: "1909", title: "Chivas Regal", text: "Chivas Brothers releases Chivas Regal, a benchmark of aged, blended Scotch.", img: "/images/pernod/13-chivas-brothers-engineers-celebrate-_1_.jpg" },
+  { year: "1934", title: "Havana Club", text: "The Cuban rum is founded, later a global icon of the category.", img: "/images/pernod/14-havanaclub-31_0.jpg" },
   { year: "1965", title: "100 Pipers", text: "The blended Scotch launches, and grows into a leader across Asia." },
   { year: "1975", title: "Two families, one vision", text: "Pernod and Ricard merge to form Pernod Ricard, a French house with global ambition." },
-  { year: "1979", title: "Absolut", text: "Absolut Vodka launches from Åhus, Sweden, and redefines premium vodka." },
+  { year: "1979", title: "Absolut", text: "Absolut Vodka launches from Åhus, Sweden, and redefines premium vodka.", img: "/images/brands/absolut/25-originalsizejpeg-absolut_atlas_lifestyle.jpg" },
   { year: "1993", title: "India begins", text: "Pernod Ricard India is incorporated, an early bet on the country's appetite for premium spirits." },
-  { year: "1995", title: "Made in India", text: "Royal Stag and Blenders Pride launch, Indian-made whiskies built for the market." },
-  { year: "1997", title: "Imperial Blue", text: "A new Indian whisky joins the portfolio and scales rapidly nationwide." },
+  { year: "1995", title: "Made in India", text: "Royal Stag and Blenders Pride launch, Indian-made whiskies built for the market.", img: "/images/brands/royal-stag/25-brand-royal-stag-barrel-select-lifestyle.jpg" },
+  { year: "1997", title: "Imperial Blue", text: "A new Indian whisky joins the portfolio and scales rapidly nationwide.", img: "/images/brands/imperial/23-brand-imperial-lifestyle-original-jpg.jpg" },
   { year: "2001", title: "An Indian portfolio", text: "The group's acquisition of Seagram brings Royal Stag, Blenders Pride, Imperial Blue and 100 Pipers into the house." },
   { year: "2010s", title: "Trading up", text: "Premiumisation accelerates; the network grows to more than thirty bottling plants and distilleries at Nashik and Behror." },
-  { year: "2021", title: "A good place", text: "The 'Good Times from a Good Place' 2030 roadmap drives water stewardship and community action across India." },
+  { year: "2021", title: "A good place", text: "The 'Good Times from a Good Place' 2030 roadmap drives water stewardship and community action across India.", img: "/images/pernod/28-nurturing_terroir1440x1080.jpg" },
   { year: "2023", title: "A new chapter", text: "Jean Touboul is appointed Managing Director & CEO, continuing the transformation of the India business." },
-  { year: "Today", title: "Among India's largest", text: "The second-largest spirits company in India by revenue, manufacturing nationwide and building for the decades ahead." },
+  { year: "Today", title: "Among India's largest", text: "The second-largest spirits company in India by revenue, manufacturing nationwide and building for the decades ahead.", img: "/images/pernod/103-the-island_2880x1234.jpg" },
 ];
 
 export default function OurHistoryPage() {
   const hero = PAGES["group-history"]?.hero;
-  const imgs = (PAGES["group-history"]?.blocks ?? [])
-    .filter((b): b is { t: "img"; v: string; alt: string } => b.t === "img")
-    .map((b) => b.v)
-    .filter((v) => v !== hero);
-  // give roughly every other milestone an image, drawn from the page's own set
-  const timeline = MILESTONES.map((m, i) => ({
-    ...m,
-    img: i % 2 === 1 ? imgs[Math.floor(i / 2) % Math.max(1, imgs.length)] : undefined,
-  }));
+  // each milestone now carries its own brand image (see MILESTONES above)
+  const timeline = MILESTONES;
   return (
     <>
       <JsonLd
