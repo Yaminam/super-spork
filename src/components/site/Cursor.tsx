@@ -38,27 +38,25 @@ export default function Cursor() {
       }
     };
 
-    // wine splash on click
+    // two drops dripping from the tipped lip on click
     const splash = (e: MouseEvent) => {
-      const n = 14;
-      for (let i = 0; i < n; i++) {
+      for (let i = 0; i < 2; i++) {
         const d = document.createElement("div");
         d.className = styles.drop;
         document.body.appendChild(d);
-        const size = 4 + Math.random() * 6;
+        const size = 3.5 + Math.random() * 2;
         d.style.width = `${size}px`;
         d.style.height = `${size}px`;
-        const angle = Math.random() * Math.PI * 2;
-        const speed = 2 + Math.random() * 5;
-        let vx = Math.cos(angle) * speed;
-        let vy = Math.sin(angle) * speed - 3.5; // burst upward first
-        let px = e.clientX;
-        let py = e.clientY - 6;
+        let vx = (Math.random() - 0.4) * 0.7;
+        let vy = 0.3; // start at rest, gravity takes over
+        // spawn at the tipped lip (just above-right of the pointer)
+        let px = e.clientX + 5 + i * 4;
+        let py = e.clientY - 11;
         let life = 0;
-        const max = 42;
+        const max = 60;
         const tick = () => {
           life += 1;
-          vy += 0.42; // gravity
+          vy += 0.32; // gravity
           px += vx;
           py += vy;
           d.style.transform = `translate(${px - size / 2}px, ${py - size / 2}px)`;
@@ -67,13 +65,6 @@ export default function Cursor() {
           else d.remove();
         };
         requestAnimationFrame(tick);
-      }
-      // a quick squash on the glass
-      if (glass.current) {
-        glass.current.animate(
-          [{ transform: glass.current.style.transform + " scale(0.8)" }, { transform: glass.current.style.transform + " scale(1)" }],
-          { duration: 220, easing: "ease-out" },
-        );
       }
     };
 
@@ -94,15 +85,16 @@ export default function Cursor() {
   if (!enabled) return null;
   return (
     <div ref={glass} className={styles.glass} aria-hidden>
-      <svg width="26" height="34" viewBox="0 0 26 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* bowl + wine */}
-        <path d="M4.5 2 H21.5 C21.5 11.5 17.5 16 13 16 C8.5 16 4.5 11.5 4.5 2 Z" fill="#7c1228" />
-        <path d="M6 6 H20 C19.2 12 16.2 14.4 13 14.4 C9.8 14.4 6.8 12 6 6 Z" fill="#a8243f" />
-        {/* rim */}
-        <path d="M4.5 2 H21.5" stroke="#e9d9b0" strokeWidth="1.4" strokeLinecap="round" />
-        {/* stem + foot */}
-        <line x1="13" y1="16" x2="13" y2="30" stroke="#e9d9b0" strokeWidth="1.5" />
-        <ellipse cx="13" cy="31" rx="6.5" ry="1.8" fill="#e9d9b0" />
+      <svg width="22" height="32" viewBox="0 0 22 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {/* elegant tulip bowl, deep glass */}
+        <path d="M5 2 C5 11 7.6 15 11 15 C14.4 15 17 11 17 2 Z" fill="#430e1a" />
+        {/* a measured pour of deep burgundy, sitting low */}
+        <path d="M6.4 7.2 C7.2 12 9.1 14 11 14 C12.9 14 14.8 12 15.6 7.2 Z" fill="#6e1226" />
+        {/* champagne rim */}
+        <path d="M5 2 H17" stroke="#d8c79a" strokeWidth="1" strokeLinecap="round" />
+        {/* slender stem + refined foot */}
+        <line x1="11" y1="15" x2="11" y2="28.5" stroke="#d8c79a" strokeWidth="1.1" />
+        <ellipse cx="11" cy="29.5" rx="5" ry="1.4" fill="#d8c79a" />
       </svg>
     </div>
   );
