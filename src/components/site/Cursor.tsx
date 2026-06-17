@@ -24,8 +24,8 @@ export default function Cursor() {
     const onMove = (e: MouseEvent) => {
       const x = e.clientX;
       const y = e.clientY;
-      // rim of the glass sits at the true pointer; the dot marks the exact hit point
-      if (glass.current) glass.current.style.transform = `translate(${x}px, ${y}px) translate(-50%, -8%)`;
+      // glass centred exactly on the pointer; the dot marks the precise hit point
+      if (glass.current) glass.current.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
       if (dot.current) dot.current.style.transform = `translate(${x}px, ${y}px)`;
     };
     const onOver = (e: MouseEvent) => {

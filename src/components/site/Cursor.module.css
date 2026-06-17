@@ -11,8 +11,8 @@
   display: block;
   filter: drop-shadow(0 3px 7px rgba(0, 0, 0, 0.55));
   /* tipped, as if mid-pour; pivot at centre so it stays on the pointer */
-  transform: rotate(-18deg);
-  transform-origin: 50% 12%;
+  transform: rotate(-16deg);
+  transform-origin: 50% 50%;
 }
 /* precise hit-point dot at the true pointer position */
 .dot {
