@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageIntro from "@/components/site/PageIntro";
 import Reveal from "@/components/site/Reveal";
+import PhotoMarquee from "@/components/site/PhotoMarquee";
+import Spotlights from "@/components/site/Spotlights";
 import BrandWall from "./BrandWall";
 import { BRAND_BY_SLUG } from "@/content/brands-detail";
 import { JsonLd, breadcrumbSchema, webPageSchema, brandsSchema } from "@/lib/seo/jsonld";
@@ -44,6 +46,18 @@ export default function BrandsPage() {
               encourage consumption, in line with Indian advertising and surrogate guidelines.
             </p>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Brand photo marquee */}
+      <PhotoMarquee />
+
+      {/* Spotlights */}
+      <section className="ll-section">
+        <div className="ll-container">
+          <Reveal><p className="ll-eyebrow"><span>·</span> In the spotlight</p></Reveal>
+          <Reveal delay={0.05}><h2 className={`ll-display ${styles.h2}`}>Brands in focus.</h2></Reveal>
+          <Spotlights />
         </div>
       </section>
 

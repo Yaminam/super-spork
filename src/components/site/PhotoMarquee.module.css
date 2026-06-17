@@ -1,0 +1,48 @@
+.viewport {
+  overflow: hidden;
+  border-block: 1px solid var(--ll-line-soft);
+  background: var(--ll-bg);
+}
+.track {
+  display: flex;
+  width: max-content;
+  gap: 1px;
+  will-change: transform;
+}
+.driftL { animation: pmL 55s linear infinite; }
+@keyframes pmL { to { transform: translateX(-50%); } }
+.viewport:hover .track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; }
+}
+.cell {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(240px, 26vw, 340px);
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  overflow: hidden;
+}
+.img {
+  object-fit: cover;
+  transition: transform 1s var(--ll-ease);
+}
+.cell:hover .img { transform: scale(1.06); }
+.cell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(0deg, rgba(5, 5, 6, 0.72), transparent 55%);
+}
+.cap {
+  position: absolute;
+  left: 1.1rem;
+  bottom: 0.9rem;
+  z-index: 2;
+  font-family: var(--ll-serif);
+  font-weight: 300;
+  font-size: var(--ll-text-lg);
+  color: var(--ll-ivory);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+}

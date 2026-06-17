@@ -15,11 +15,22 @@ export const metadata: Metadata = {
 };
 
 const MILESTONES: { year: string; title: string; text: string }[] = [
+  { year: "1715", title: "Martell", text: "Maison Martell is founded in Cognac, one of the oldest of the great cognac houses." },
+  { year: "1780", title: "Jameson", text: "John Jameson establishes his Dublin distillery, and Irish whiskey enters the house's future." },
   { year: "1805", title: "The lineage begins", text: "Maison Pernod opens in France. The craft and the name that will anchor the house enter the world." },
+  { year: "1811", title: "Perrier-Jouët", text: "The champagne house is founded in Épernay, a name still poured at the finest tables." },
+  { year: "1824", title: "The Glenlivet", text: "Licensed in Speyside, it becomes one of the defining single malt Scotch whiskies." },
+  { year: "1827", title: "Ballantine's", text: "George Ballantine begins blending in Edinburgh, building a Scotch loved worldwide." },
+  { year: "1863", title: "Beefeater", text: "The classic London Dry gin is established, and goes on to travel the world." },
+  { year: "1909", title: "Chivas Regal", text: "Chivas Brothers releases Chivas Regal, a benchmark of aged, blended Scotch." },
+  { year: "1934", title: "Havana Club", text: "The Cuban rum is founded, later a global icon of the category." },
+  { year: "1965", title: "100 Pipers", text: "The blended Scotch launches, and grows into a leader across Asia." },
   { year: "1975", title: "Two families, one vision", text: "Pernod and Ricard merge to form Pernod Ricard, a French house with global ambition." },
+  { year: "1979", title: "Absolut", text: "Absolut Vodka launches from Åhus, Sweden, and redefines premium vodka." },
   { year: "1993", title: "India begins", text: "Pernod Ricard India is incorporated, an early bet on the country's appetite for premium spirits." },
+  { year: "1995", title: "Made in India", text: "Royal Stag and Blenders Pride launch, Indian-made whiskies built for the market." },
+  { year: "1997", title: "Imperial Blue", text: "A new Indian whisky joins the portfolio and scales rapidly nationwide." },
   { year: "2001", title: "An Indian portfolio", text: "The group's acquisition of Seagram brings Royal Stag, Blenders Pride, Imperial Blue and 100 Pipers into the house." },
-  { year: "2000s", title: "Made in India, at scale", text: "Indian-made whiskies grow nationally as the business invests in local manufacturing and distribution." },
   { year: "2010s", title: "Trading up", text: "Premiumisation accelerates; the network grows to more than thirty bottling plants and distilleries at Nashik and Behror." },
   { year: "2021", title: "A good place", text: "The 'Good Times from a Good Place' 2030 roadmap drives water stewardship and community action across India." },
   { year: "2023", title: "A new chapter", text: "Jean Touboul is appointed Managing Director & CEO, continuing the transformation of the India business." },
