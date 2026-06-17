@@ -10,6 +10,7 @@ import styles from "./Cursor.module.css";
  */
 export default function Cursor() {
   const glass = useRef<HTMLDivElement>(null);
+  const dot = useRef<HTMLDivElement>(null);
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
@@ -21,9 +22,11 @@ export default function Cursor() {
     document.documentElement.classList.add("cursor-custom");
 
     const onMove = (e: MouseEvent) => {
-      if (glass.current) {
-        glass.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -55%)`;
-      }
+      const x = e.clientX;
+      const y = e.clientY;
+      // rim of the glass sits at the true pointer; the dot marks the exact hit point
+      if (glass.current) glass.current.style.transform = `translate(${x}px, ${y}px) translate(-50%, -8%)`;
+      if (dot.current) dot.current.style.transform = `translate(${x}px, ${y}px)`;
     };
     const onOver = (e: MouseEvent) => {
       const t = e.target as HTMLElement;
@@ -84,6 +87,8 @@ export default function Cursor() {
 
   if (!enabled) return null;
   return (
+    <>
+    <div ref={dot} className={styles.dot} aria-hidden />
     <div ref={glass} className={styles.glass} aria-hidden>
       <svg width="22" height="32" viewBox="0 0 22 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* elegant tulip bowl, deep glass */}
@@ -97,5 +102,6 @@ export default function Cursor() {
         <ellipse cx="11" cy="29.5" rx="5" ry="1.4" fill="#d8c79a" />
       </svg>
     </div>
+    </>
   );
 }

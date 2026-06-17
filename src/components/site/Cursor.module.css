@@ -10,9 +10,23 @@
 .glass svg {
   display: block;
   filter: drop-shadow(0 3px 7px rgba(0, 0, 0, 0.55));
-  /* tipped, as if mid-pour */
-  transform: rotate(-22deg);
-  transform-origin: 50% 82%;
+  /* tipped, as if mid-pour; pivot at centre so it stays on the pointer */
+  transform: rotate(-18deg);
+  transform-origin: 50% 12%;
+}
+/* precise hit-point dot at the true pointer position */
+.dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%;
+  background: var(--ll-gold-light);
+  pointer-events: none;
+  z-index: 100000;
+  will-change: transform;
 }
 .active {
   scale: 1.12;
