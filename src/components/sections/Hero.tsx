@@ -1,34 +1,38 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import Magnetic from "@/components/site/Magnetic";
 import styles from "./Hero.module.css";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
- * First panel of the home page. The bottle itself is the fixed full-height
- * spine (BottleSpine, mounted once in the page); this is the editorial intro
- * that sits to its left.
+ * First panel of the home page. Its reveal is timed to begin as the intro
+ * curtain lifts (~2.3s), so the headline appears with the bottle rather than
+ * animating unseen behind the overlay. Instant under reduced motion.
  */
 export default function Hero() {
+  const reduce = useReducedMotion();
+  const B = reduce ? 0 : 2.3; // begin as the intro curtain wipes away
+
   return (
-    <section className={styles.hero} aria-labelledby="hero-heading">
+    <section className={styles.hero} aria-labelledby="hero-heading" data-snap>
       <div className={styles.content}>
         <motion.p
           className="ll-eyebrow"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.3, ease: EASE }}
+          transition={{ duration: 1.2, delay: B, ease: EASE }}
         >
           <span>01</span> Créateurs de convivialité, since 1805
         </motion.p>
 
         <h1 id="hero-heading" className={`ll-display ${styles.headline}`}>
-          <Word delay={0.6}>Light,</Word>{" "}
-          <Word delay={0.85}>held</Word>{" "}
-          <Word delay={1.1}>in</Word>{" "}
-          <Word delay={1.35} accent>
+          <Word delay={B + 0.25}>Light,</Word>{" "}
+          <Word delay={B + 0.45}>held</Word>{" "}
+          <Word delay={B + 0.65}>in</Word>{" "}
+          <Word delay={B + 0.85} accent>
             glass.
           </Word>
         </h1>
@@ -37,7 +41,7 @@ export default function Hero() {
           className={styles.sub}
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 1.7, ease: EASE }}
+          transition={{ duration: 1.2, delay: B + 1.1, ease: EASE }}
         >
           A maker of premium spirits in India, seen through the light its craft holds.
         </motion.p>
@@ -46,10 +50,10 @@ export default function Hero() {
           className={styles.actions}
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 2.0, ease: EASE }}
+          transition={{ duration: 1.2, delay: B + 1.35, ease: EASE }}
         >
-          <Link href="/brands" className={styles.ctaPrimary}>Explore the brands</Link>
-          <Link href="/group/our-history" className={styles.ctaGhost}>Our story <span aria-hidden>→</span></Link>
+          <Magnetic><Link href="/brands" className={styles.ctaPrimary}>Explore the brands</Link></Magnetic>
+          <Magnetic><Link href="/group/our-history" className={styles.ctaGhost}>Our story <span aria-hidden>→</span></Link></Magnetic>
         </motion.div>
       </div>
 
@@ -57,7 +61,7 @@ export default function Hero() {
         className={styles.scroll}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2.2, ease: EASE }}
+        transition={{ duration: 1, delay: B + 1.6, ease: EASE }}
         aria-hidden
       >
         <span>Pour</span>

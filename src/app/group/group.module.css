@@ -11,7 +11,8 @@
 .leadRight { min-width: 0; }
 .statement {
   margin-top: 1.25rem;
-  font-size: var(--ll-text-2xl);
+  font-size: var(--ll-text-3xl);
+  line-height: 1.1;
   color: var(--ll-ivory);
   max-width: 20ch;
 }
@@ -35,17 +36,40 @@
 }
 
 /* What we stand for */
-.valuesSec { border-top: 1px solid var(--ll-line-soft); background: var(--ll-bg-2); }
+.valuesSec {
+  border-top: 1px solid var(--ll-line-soft);
+  background: radial-gradient(60% 50% at 85% 18%, rgba(201, 169, 110, 0.07), transparent 60%), var(--ll-bg-2);
+}
 .cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: clamp(1.25rem, 2.5vw, 2rem); }
-.card { border: 1px solid var(--ll-line-soft); border-radius: var(--ll-radius); padding: clamp(1.5rem, 3vw, 2.25rem); background: var(--ll-bg); transition: border-color var(--ll-dur) var(--ll-ease-std); }
-.card:hover { border-color: rgba(201, 169, 110, 0.4); }
+.card {
+  position: relative;
+  border: 1px solid var(--ll-line-soft);
+  border-radius: var(--ll-radius);
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent);
+  overflow: hidden;
+  transition: border-color var(--ll-dur) var(--ll-ease-std), transform var(--ll-dur) var(--ll-ease-std);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--ll-gold), transparent);
+  transition: width 0.6s var(--ll-ease);
+}
+.card:hover { border-color: rgba(201, 169, 110, 0.45); transform: translateY(-4px); }
+.card:hover::before { width: 100%; }
 .cardName { font-family: var(--ll-serif); font-weight: 300; font-size: var(--ll-text-2xl); color: var(--ll-ivory); margin-bottom: 0.6rem; }
 .cardText { font-size: var(--ll-text-base); line-height: 1.7; color: var(--ll-text-muted); max-width: 46ch; }
 
 /* How we operate */
 .opsSec { border-top: 1px solid var(--ll-line-soft); }
 .opsList { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: clamp(1.25rem, 2.5vw, 2rem); }
-.op { border-left: 1px solid var(--ll-gold); padding-left: clamp(1rem, 2vw, 1.5rem); }
+.op { border-left: 2px solid var(--ll-gold); padding-left: clamp(1rem, 2vw, 1.5rem); transition: transform var(--ll-dur) var(--ll-ease-std), padding-left var(--ll-dur) var(--ll-ease-std); }
+.op:hover { transform: translateX(4px); padding-left: clamp(1.25rem, 2.5vw, 1.9rem); }
 .opName { font-family: var(--ll-serif); font-weight: 300; font-size: var(--ll-text-xl); color: var(--ll-ivory); margin-bottom: 0.5rem; }
 .opText { font-size: var(--ll-text-base); line-height: 1.7; color: var(--ll-text-muted); max-width: 48ch; }
 
@@ -53,7 +77,7 @@
 .statsBand { border-block: 1px solid var(--ll-line-soft); background: var(--ll-bg-2); padding-block: clamp(2.5rem, 5vw, 4rem); }
 .statsRow { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1.5rem, 4vw, 3rem); }
 .stat { display: flex; flex-direction: column; gap: 0.5rem; }
-.statValue { font-family: var(--ll-serif); font-weight: 300; font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--ll-ivory); line-height: 1.05; }
+.statValue { font-family: var(--ll-serif); font-weight: 300; font-size: clamp(2rem, 4vw, 3.2rem); color: var(--ll-gold-light); line-height: 1.02; }
 .statLabel { font-size: var(--ll-text-xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ll-gold); }
 
 /* Timeline */

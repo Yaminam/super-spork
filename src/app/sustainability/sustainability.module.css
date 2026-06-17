@@ -45,7 +45,8 @@
 /* Stats */
 .statsBand {
   border-block: 1px solid var(--ll-line-soft);
-  background: var(--ll-bg-2);
+  background: radial-gradient(60% 50% at 85% 18%, rgba(143, 174, 106, 0.08), transparent 60%),
+    var(--ll-bg-2);
   padding-block: clamp(2.5rem, 5vw, 4rem);
 }
 .statsRow {
@@ -57,9 +58,9 @@
 .statValue {
   font-family: var(--ll-serif);
   font-weight: 300;
-  font-size: clamp(1.8rem, 3.6vw, 2.75rem);
-  color: var(--ll-ivory);
-  line-height: 1.05;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--ll-gold-light);
+  line-height: 1.02;
 }
 .statLabel {
   font-size: var(--ll-text-xs);
@@ -86,13 +87,30 @@
   gap: clamp(1.25rem, 2.5vw, 2rem);
 }
 .pillar {
+  position: relative;
   border: 1px solid var(--ll-line-soft);
   border-radius: var(--ll-radius);
   overflow: hidden;
-  background: var(--ll-bg-2);
-  transition: border-color var(--ll-dur) var(--ll-ease-std);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent), var(--ll-bg-2);
+  transition: border-color var(--ll-dur) var(--ll-ease-std),
+    transform var(--ll-dur) var(--ll-ease-std);
 }
-.pillar:hover { border-color: rgba(201, 169, 110, 0.4); }
+.pillar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--ll-gold), var(--ll-gold-light));
+  transition: width var(--ll-dur) var(--ll-ease-std);
+}
+.pillar:hover {
+  border-color: rgba(201, 169, 110, 0.45);
+  transform: translateY(-4px);
+}
+.pillar:hover::before { width: 100%; }
 .pillarMedia {
   position: relative;
   display: block;
@@ -127,7 +145,8 @@
 .pillarName {
   font-family: var(--ll-serif);
   font-weight: 300;
-  font-size: var(--ll-text-2xl);
+  font-size: var(--ll-text-3xl);
+  line-height: 1.1;
   color: var(--ll-ivory);
   margin-bottom: 0.75rem;
 }
@@ -144,7 +163,8 @@
 .blockH2 {
   font-family: var(--ll-serif);
   font-weight: 300;
-  font-size: var(--ll-text-2xl);
+  font-size: var(--ll-text-3xl);
+  line-height: 1.1;
   color: var(--ll-ivory);
   margin-top: clamp(2rem, 4vw, 3rem);
   margin-bottom: 0.75rem;
@@ -169,11 +189,13 @@
 /* Statement */
 .statementSec {
   border-top: 1px solid var(--ll-line-soft);
-  background: linear-gradient(180deg, var(--ll-bg) 0%, #0a0c0a 100%);
+  background: radial-gradient(60% 50% at 85% 18%, rgba(143, 174, 106, 0.08), transparent 60%),
+    linear-gradient(180deg, var(--ll-bg) 0%, #0a0c0a 100%);
 }
 .statement {
   max-width: 24ch;
   font-size: var(--ll-text-3xl);
+  line-height: 1.1;
   font-style: italic;
   color: var(--ll-ivory);
 }

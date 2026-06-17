@@ -2,8 +2,8 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState, type MutableRefObject } from "react";
-import { Bloom, EffectComposer, SMAA } from "@react-three/postprocessing";
-import { Environment, Lightformer } from "@react-three/drei";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import { Environment, Lightformer, Sparkles } from "@react-three/drei";
 import * as THREE from "three";
 import Bottle, { BottleSpec } from "./Bottle";
 import WebGLGuard from "./WebGLGuard";
@@ -86,7 +86,10 @@ function Spine({
 export default function BottleSpine() {
   const [reduce, setReduce] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [onScreen, setOnScreen] = useState(true);
   const scroll = useRef(0);
+  const backdrop = useRef<HTMLDivElement>(null);
+  const wrap = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -96,6 +99,17 @@ export default function BottleSpine() {
 
     const onVis = () => setHidden(document.hidden);
     document.addEventListener("visibilitychange", onVis);
+
+    // pause the canvas once the bottle stage scrolls out of view (lower
+    // sections) so the heavy glass stops rendering when it's not visible
+    let io: IntersectionObserver | undefined;
+    if (wrap.current) {
+      io = new IntersectionObserver(
+        ([e]) => setOnScreen(e.isIntersecting),
+        { threshold: 0.01 },
+      );
+      io.observe(wrap.current);
+    }
 
     let raf = 0;
     const onScroll = () => {
@@ -114,6 +128,23 @@ export default function BottleSpine() {
           const max = document.documentElement.scrollHeight - window.innerHeight;
           scroll.current = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
         }
+        // spirit-hue wash: the studio glow travels amber -> copper -> gold ->
+        // steel -> green as you descend (cheap DOM style set, no re-render)
+        if (backdrop.current) {
+          const stops = [
+            [201, 150, 86], [176, 95, 55], [201, 169, 110], [128, 150, 182], [120, 152, 96],
+          ];
+          const f = scroll.current * (stops.length - 1);
+          const i = Math.min(Math.floor(f), stops.length - 2);
+          const t = f - i;
+          const a = stops[i], b = stops[i + 1];
+          const r = Math.round(a[0] + (b[0] - a[0]) * t);
+          const g = Math.round(a[1] + (b[1] - a[1]) * t);
+          const bl = Math.round(a[2] + (b[2] - a[2]) * t);
+          backdrop.current.style.background =
+            `radial-gradient(42% 62% at 50% 46%, rgba(${r},${g},${bl},0.5), rgba(${Math.round(r * 0.55)},${Math.round(g * 0.45)},${Math.round(bl * 0.4)},0.2) 44%, rgba(8,7,9,0) 68%),` +
+            ` radial-gradient(70% 40% at 50% 50%, rgba(150,120,200,0.1), transparent 60%)`;
+        }
         raf = 0;
       });
     };
@@ -126,28 +157,31 @@ export default function BottleSpine() {
       document.removeEventListener("visibilitychange", onVis);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      io?.disconnect();
       if (raf) cancelAnimationFrame(raf);
     };
   }, []);
 
-  const frameloop = hidden ? "never" : "always";
+  // render only when the bottle is actually visible, awake, and motion is on
+  const frameloop = hidden || !onScreen || reduce ? "never" : "always";
 
   return (
-    <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", overflow: "hidden" }}>
+    <div ref={wrap} aria-hidden style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", overflow: "hidden" }}>
       {/* studio backdrop: a warm glow column the bottle stands in, so it never
        * floats in a flat void (the look award bottle sites share) */}
       <div
+        ref={backdrop}
         style={{
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(38% 60% at 50% 46%, rgba(201,150,86,0.30), rgba(120,70,30,0.10) 42%, rgba(8,7,9,0) 66%), radial-gradient(70% 40% at 50% 50%, rgba(150,120,200,0.10), transparent 60%)",
+            "radial-gradient(42% 62% at 50% 46%, rgba(201,150,86,0.5), rgba(110,68,34,0.2) 44%, rgba(8,7,9,0) 68%), radial-gradient(70% 40% at 50% 50%, rgba(150,120,200,0.1), transparent 60%)",
         }}
       />
       <WebGLGuard fallback={<SpineFallback />}>
         <Canvas
           camera={{ position: [0, 0, 6.4], fov: 32 }}
-          dpr={[1, 2]}
+          dpr={[1, 1.5]}
           frameloop={frameloop}
           gl={{
             antialias: true,
@@ -177,9 +211,12 @@ export default function BottleSpine() {
 
             <Spine scrollRef={scroll} reduce={reduce} />
 
+            {/* ambient gold light motes drifting at depth (premium parallax) */}
+            <Sparkles count={55} scale={[9, 13, 6]} size={5} speed={0.4} noise={0.5} color="#e8d6a0" opacity={0.85} />
+            <Sparkles count={18} scale={[6, 11, 4]} size={9} speed={0.28} noise={0.3} color="#fff1d6" opacity={0.6} />
+
             <EffectComposer multisampling={0}>
-              <Bloom intensity={0.28} luminanceThreshold={0.8} luminanceSmoothing={0.7} mipmapBlur radius={0.5} />
-              <SMAA />
+              <Bloom intensity={0.3} luminanceThreshold={0.8} luminanceSmoothing={0.7} mipmapBlur radius={0.5} />
             </EffectComposer>
           </Suspense>
         </Canvas>

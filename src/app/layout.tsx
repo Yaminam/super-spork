@@ -7,6 +7,7 @@ import CookieConsent from "@/components/site/CookieConsent";
 import ScrollProgress from "@/components/site/ScrollProgress";
 import ScrollGlow from "@/components/site/ScrollGlow";
 import SmoothScroll from "@/components/site/SmoothScroll";
+import Cursor from "@/components/site/Cursor";
 import { JsonLd, organizationSchema, websiteSchema } from "@/lib/seo/jsonld";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/site-config";
 
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="ll-grain">
         <a href="#main" className="ll-skip">Skip to content</a>
         <SmoothScroll>
+          <Cursor />
           <ScrollGlow />
           <ScrollProgress />
           <AgeGate />

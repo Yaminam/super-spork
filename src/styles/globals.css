@@ -133,3 +133,9 @@ button {
 .ll-no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* hide the native cursor only when the custom cursor is active (JS confirmed) */
+html.cursor-custom,
+html.cursor-custom * {
+  cursor: none !important;
+}

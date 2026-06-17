@@ -33,8 +33,10 @@
  * vertically centered, so scrolling reveals one idea at a time beside the
  * bottle (Apple / Macallan / Hennessy product-scroll pattern) */
 .col {
+  position: relative;
+  overflow: hidden;
   width: 100%;
-  min-height: 82svh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   padding-block: clamp(3rem, 8vh, 6rem);
@@ -48,6 +50,7 @@
 .colInner {
   /* a side column that clears the centre channel the bottle occupies */
   position: relative;
+  z-index: 1;
   width: 100%;
   max-width: min(29vw, 400px);
   --accent: var(--ll-gold);
@@ -200,14 +203,20 @@
 .brandItem {
   padding: 0.18rem 0;
 }
+.brandLink {
+  display: inline-block;
+  text-decoration: none;
+}
 .brandName {
   font-family: var(--ll-serif);
   font-weight: 300;
   font-size: var(--ll-text-2xl);
   color: var(--ll-ivory);
   line-height: 1.18;
+  transition: color var(--ll-dur) var(--ll-ease);
 }
 .brandItem:nth-child(even) .brandName { font-style: italic; color: var(--ll-text-muted); }
+.brandLink:hover .brandName { color: var(--ll-gold); }
 
 .manifesto {
   background: var(--ll-bg);

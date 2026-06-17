@@ -119,22 +119,19 @@ export default function Bottle({ spec }: { spec: BottleSpec }) {
       {/* glass shell — double-pass refraction, dispersion, faint cool tint */}
       <mesh geometry={glassGeo}>
         <MeshTransmissionMaterial
-          backside
-          backsideThickness={0.5}
-          resolution={512}
-          samples={12}
+          resolution={256}
+          samples={6}
           transmission={1}
           thickness={0.9}
           ior={1.5}
-          dispersion={2.6}
-          roughness={0.018}
-          chromaticAberration={0.05}
-          anisotropy={0.12}
-          distortion={0.03}
-          distortionScale={0.18}
-          temporalDistortion={0.015}
+          dispersion={1.6}
+          roughness={0.04}
+          chromaticAberration={0.04}
+          anisotropy={0.1}
+          distortion={0}
+          temporalDistortion={0}
           clearcoat={1}
-          clearcoatRoughness={0.02}
+          clearcoatRoughness={0.03}
           attenuationColor="#e8f0ea"
           attenuationDistance={4}
         />
