@@ -28,16 +28,6 @@ export default function Cursor() {
       if (glass.current) glass.current.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
       if (dot.current) dot.current.style.transform = `translate(${x}px, ${y}px)`;
     };
-    const onOver = (e: MouseEvent) => {
-      if ((e.target as HTMLElement).closest("a, button, [data-magnetic], summary, input, label")) {
-        glass.current?.classList.add(styles.active);
-      }
-    };
-    const onOut = (e: MouseEvent) => {
-      if ((e.target as HTMLElement).closest("a, button, [data-magnetic], summary, input, label")) {
-        glass.current?.classList.remove(styles.active);
-      }
-    };
     const splash = (e: MouseEvent) => {
       for (let i = 0; i < 3; i++) {
         const d = document.createElement("div");
@@ -69,14 +59,10 @@ export default function Cursor() {
     };
 
     window.addEventListener("mousemove", onMove);
-    document.addEventListener("mouseover", onOver);
-    document.addEventListener("mouseout", onOut);
     window.addEventListener("mousedown", splash);
 
     return () => {
       window.removeEventListener("mousemove", onMove);
-      document.removeEventListener("mouseover", onOver);
-      document.removeEventListener("mouseout", onOut);
       window.removeEventListener("mousedown", splash);
       document.documentElement.classList.remove("cursor-custom");
     };
