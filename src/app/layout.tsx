@@ -57,8 +57,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body className="ll-grain">
         <a href="#main" className="ll-skip">Skip to content</a>
+        {/* Cursor lives outside SmoothScroll so its fixed positioning is
+            anchored to the viewport, not any scroll wrapper transform. */}
+        <Cursor />
         <SmoothScroll>
-          <Cursor />
           <ScrollGlow />
           <ScrollProgress />
           <AgeGate />
