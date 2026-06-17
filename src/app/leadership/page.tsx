@@ -3,6 +3,7 @@ import PageIntro from "@/components/site/PageIntro";
 import PhotoBreak from "@/components/site/PhotoBreak";
 import Reveal from "@/components/site/Reveal";
 import Faq from "@/components/site/Faq";
+import BrandHighlights from "@/components/site/BrandHighlights";
 import { JsonLd, breadcrumbSchema, webPageSchema, leadershipSchema } from "@/lib/seo/jsonld";
 import { LEADERSHIP, LEADERSHIP_AS_OF, GOVERNANCE, CORPORATE_FAQS } from "@/content/india";
 import styles from "./leadership.module.css";
@@ -58,10 +59,10 @@ export default function LeadershipPage() {
       </section>
 
       <PhotoBreak
-        src="/images/pernod/17-the-island_exterior_2_2880x1234.jpg"
+        src="/images/pages/investors/00-pernod-20ricard-20hq.jpg"
         eyebrow="Governance"
         caption="Run to a global standard, governed for scrutiny."
-        alt="The Island campus"
+        alt="Pernod Ricard headquarters"
       />
 
       {/* Governance pillars */}
@@ -81,6 +82,8 @@ export default function LeadershipPage() {
       </section>
 
       {/* FAQ, answer-ready, emits FAQPage schema */}
+      <BrandHighlights />
+
       <Faq items={CORPORATE_FAQS} title="What people ask about Pernod Ricard India." eyebrow="Answers" />
     </article>
   );

@@ -4,6 +4,7 @@ import PageIntro from "@/components/site/PageIntro";
 import Reveal from "@/components/site/Reveal";
 import { JsonLd, breadcrumbSchema, webPageSchema } from "@/lib/seo/jsonld";
 import CountUp from "@/components/site/CountUp";
+import BrandHighlights from "@/components/site/BrandHighlights";
 import { ECONOMY_CONTRIBUTION } from "@/content/india";
 import styles from "./role-society.module.css";
 
@@ -84,6 +85,8 @@ export default function OurRoleSocietyPage() {
           </Reveal>
         </div>
       </section>
+
+      <BrandHighlights />
     </article>
   );
 }

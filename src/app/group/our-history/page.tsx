@@ -4,6 +4,7 @@ import PageIntro from "@/components/site/PageIntro";
 import Reveal from "@/components/site/Reveal";
 import { JsonLd, breadcrumbSchema, webPageSchema } from "@/lib/seo/jsonld";
 import { PAGES } from "@/content/pages";
+import BrandHighlights from "@/components/site/BrandHighlights";
 import HistoryTimeline from "./HistoryTimeline";
 import styles from "./history.module.css";
 
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 const MILESTONES: { year: string; title: string; text: string; img?: string }[] = [
-  { year: "1715", title: "Martell", text: "Maison Martell is founded in Cognac, one of the oldest of the great cognac houses.", img: "/images/pernod/21-maison_martell_interior_2880x1234.jpg" },
+  { year: "1715", title: "Martell", text: "Maison Martell is founded in Cognac, one of the oldest of the great cognac houses.", img: "/images/brands/martell/25-brand-martell-cordon-bleu-lifestyle-orig.jpg" },
   { year: "1780", title: "Jameson", text: "John Jameson establishes his Dublin distillery, and Irish whiskey enters the house's future.", img: "/images/pernod/27-jameson_distillery_bow_st_bar.jpg" },
   { year: "1805", title: "The lineage begins", text: "Maison Pernod opens in France. The craft and the name that will anchor the house enter the world." },
   { year: "1811", title: "Perrier-Jouët", text: "The champagne house is founded in Épernay, a name still poured at the finest tables.", img: "/images/pernod/32-maison_belle_epoque.jpg" },
@@ -34,7 +35,7 @@ const MILESTONES: { year: string; title: string; text: string; img?: string }[] 
   { year: "2010s", title: "Trading up", text: "Premiumisation accelerates; the network grows to more than thirty bottling plants and distilleries at Nashik and Behror." },
   { year: "2021", title: "A good place", text: "The 'Good Times from a Good Place' 2030 roadmap drives water stewardship and community action across India.", img: "/images/pernod/28-nurturing_terroir1440x1080.jpg" },
   { year: "2023", title: "A new chapter", text: "Jean Touboul is appointed Managing Director & CEO, continuing the transformation of the India business." },
-  { year: "Today", title: "Among India's largest", text: "The second-largest spirits company in India by revenue, manufacturing nationwide and building for the decades ahead.", img: "/images/pernod/103-the-island_2880x1234.jpg" },
+  { year: "Today", title: "Among India's largest", text: "The second-largest spirits company in India by revenue, manufacturing nationwide and building for the decades ahead.", img: "/images/pernod/31-midleton_distillery.jpg" },
 ];
 
 export default function OurHistoryPage() {
@@ -80,6 +81,8 @@ export default function OurHistoryPage() {
           <HistoryTimeline items={timeline} />
         </div>
       </section>
+
+      <BrandHighlights />
     </>
   );
 }

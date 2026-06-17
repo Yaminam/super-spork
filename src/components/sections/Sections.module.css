@@ -195,53 +195,131 @@
     radial-gradient(55% 50% at 76% 42%, rgba(201, 169, 110, 0.13), transparent 62%),
     linear-gradient(180deg, var(--ll-bg-2) 0%, var(--ll-bg) 100%);
 }
-/* scroll-drawn rail timeline */
-.tlWrap { position: relative; padding-left: clamp(2.5rem, 5vw, 4rem); }
-.tlRail {
-  position: absolute;
-  left: clamp(0.6rem, 1.5vw, 1.2rem);
-  top: 0.5rem;
-  bottom: 0.5rem;
-  width: 2px;
-  background: var(--ll-line-soft);
+/* "The Reel": pinned horizontal heritage timeline */
+.reel { position: relative; height: 460vh; }
+.reelStage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.tlRailFill {
+.reelHead {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, var(--ll-gold-light), var(--ll-gold) 70%, var(--ll-gold-light));
-  transform-origin: top;
-  box-shadow: 0 0 12px 1px rgba(201, 169, 110, 0.6);
+  top: clamp(1.5rem, 4vw, 3rem);
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding-inline: clamp(1.25rem, 5vw, 5rem);
+  pointer-events: none;
 }
-.tlBeat {
-  position: relative;
-  padding-block: clamp(1.6rem, 3.5vw, 2.75rem);
-}
-.tlDot {
-  position: absolute;
-  left: calc(-1 * clamp(2.5rem, 5vw, 4rem) + clamp(0.6rem, 1.5vw, 1.2rem) - 5px);
-  top: clamp(2rem, 4vw, 3.1rem);
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--ll-gold);
-  box-shadow: 0 0 16px 3px rgba(201, 169, 110, 0.6);
-}
-.tlYear {
+.reelTitle {
+  margin-top: 0.75rem;
   font-family: var(--ll-serif);
   font-weight: 300;
-  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
-  line-height: 1;
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  line-height: 1.05;
+  color: var(--ll-ivory);
+  max-width: 18ch;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
+}
+.reelRow {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
+  padding-inline: clamp(1.25rem, 5vw, 5rem);
+  will-change: transform;
+}
+.reelPanel {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(300px, 56vw, 760px);
+  height: min(64vh, 560px);
+  border-radius: var(--ll-radius);
+  overflow: hidden;
+  border: 1px solid var(--ll-line-soft);
+  transition: border-color var(--ll-dur) var(--ll-ease-std);
+}
+.reelMedia { position: absolute; inset: 0; }
+.reelImg { object-fit: cover; transform: scale(1.04); transition: transform 1.2s var(--ll-ease); }
+.reelShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 5, 6, 0.1) 0%, rgba(5, 5, 6, 0.35) 45%, rgba(5, 5, 6, 0.92) 100%);
+}
+.reelPanel[data-active="true"] { border-color: rgba(201, 169, 110, 0.5); }
+.reelPanel[data-active="true"] .reelImg { transform: scale(1.1); }
+.reelBody {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+.reelNo {
+  font-family: var(--ll-mono);
+  font-size: var(--ll-text-xs);
+  letter-spacing: 0.2em;
   color: var(--ll-gold);
 }
-.tlText {
-  margin-top: 0.6rem;
+.reelYear {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: var(--ll-serif);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 0.95;
+  color: var(--ll-ivory);
+}
+.reelBar { display: block; width: 3rem; height: 2px; margin: 1rem 0; background: linear-gradient(90deg, var(--ll-gold), transparent); }
+.reelText {
   font-family: var(--ll-serif);
   font-weight: 300;
   font-size: var(--ll-text-lg);
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--ll-text);
-  max-width: 54ch;
+  max-width: 42ch;
+}
+.reelRail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: clamp(1.25rem, 3vw, 2.25rem);
+  z-index: 3;
+  padding-inline: clamp(1.25rem, 5vw, 5rem);
+  pointer-events: none;
+}
+.reelRailTrack { position: relative; height: 1px; background: var(--ll-line-soft); }
+.reelRailFill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--ll-gold-light), var(--ll-gold));
+  box-shadow: 0 0 10px 1px rgba(201, 169, 110, 0.55);
+}
+.reelRailYears { display: flex; justify-content: space-between; margin-top: 0.7rem; }
+.reelRailYear {
+  font-family: var(--ll-serif);
+  font-size: var(--ll-text-sm);
+  color: var(--ll-text-faint);
+  transition: color var(--ll-dur) var(--ll-ease-std), transform var(--ll-dur) var(--ll-ease-std);
+}
+.reelRailYear[data-active="true"] { color: var(--ll-gold); transform: scale(1.18); }
+
+/* vertical fallback on narrow screens — measured horizontal travel becomes 0 */
+@media (max-width: 760px) {
+  .reel { height: auto; }
+  .reelStage {
+    position: static;
+    height: auto;
+    overflow: visible;
+    padding: clamp(3rem, 9vw, 5rem) clamp(1.25rem, 5vw, 2rem);
+  }
+  .reelHead { position: static; padding-inline: 0; margin-bottom: 1.75rem; }
+  .reelRow { flex-direction: column; padding-inline: 0; gap: 1.25rem; }
+  .reelPanel { width: 100%; height: 58vh; }
+  .reelRail { display: none; }
 }
 
 .timeline { list-style: none; margin: 0; padding: 0; }

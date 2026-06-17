@@ -26,7 +26,10 @@ body {
   line-height: 1.5;
   color: var(--ll-text);
   background: var(--ll-bg);
-  overflow-x: hidden;
+  /* clip (not hidden) so we contain horizontal overflow WITHOUT creating a
+     scroll container — the latter breaks position: sticky (e.g. the heritage
+     reel) once Lenis owns the root scroll. */
+  overflow-x: clip;
   -webkit-tap-highlight-color: transparent;
 }
 

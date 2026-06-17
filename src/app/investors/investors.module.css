@@ -46,7 +46,7 @@
 }
 .highlight:hover { border-color: rgba(201, 169, 110, 0.45); transform: translateY(-4px); }
 .highlight:hover::before { width: 100%; }
-.highlightName { font-family: var(--ll-serif); font-weight: 300; font-size: var(--ll-text-3xl); line-height: 1.1; color: var(--ll-ivory); margin-bottom: 0.6rem; }
+.highlightName { font-family: var(--ll-serif); font-weight: 300; font-size: var(--ll-text-2xl); line-height: 1.12; color: var(--ll-ivory); margin-bottom: 0.6rem; overflow-wrap: anywhere; hyphens: auto; }
 .highlightText { font-size: var(--ll-text-base); line-height: 1.7; color: var(--ll-text-muted); max-width: 46ch; }
 @media (min-width: 760px) { .highlights { grid-template-columns: repeat(3, 1fr); } }
 
@@ -60,7 +60,7 @@
 }
 .statsRow { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1.5rem, 4vw, 3rem); }
 .stat { display: flex; flex-direction: column; gap: 0.5rem; }
-.statValue { font-family: var(--ll-serif); font-weight: 300; font-size: clamp(2rem, 4vw, 3.2rem); color: var(--ll-gold-light); line-height: 1.02; }
+.statValue { font-family: var(--ll-serif); font-weight: 300; font-size: clamp(1.5rem, 2.8vw, 2.3rem); color: var(--ll-gold-light); line-height: 1.05; overflow-wrap: anywhere; }
 .statLabel { font-size: var(--ll-text-xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ll-gold); }
 
 .head { margin-bottom: clamp(1.75rem, 4vw, 2.75rem); }

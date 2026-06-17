@@ -1635,7 +1635,7 @@ export const BRAND_DETAILS: BrandDetail[] = [
     "name": "La Hechicera",
     "category": "Rum",
     "description": "An aged rum crafted ‘from barrel to bottle,’ born from Colombian family tradition.",
-    "hero": "/images/brands/la-hechicera/00-pernod-ricard-la-hechicera-reserva-famil.png",
+    "hero": "/images/brands/la-hechicera/25-pernod-ricard-la-hechicera-reserva-famil.jpg",
     "products": [
       "/images/brands/la-hechicera/24-pernod-ricard-la-hechicera-banana-infuse.jpg",
       "/images/brands/la-hechicera/25-pernod-ricard-la-hechicera-reserva-famil.jpg",
@@ -1724,7 +1724,7 @@ export const BRAND_DETAILS: BrandDetail[] = [
     "name": "Lillet",
     "category": "Aperitif",
     "description": "Lillet is the French Apéritif for a refreshingly stylish Spritz",
-    "hero": "/images/brands/lillet/00-lillet_rose_500x500_0.png",
+    "hero": "/images/brands/lillet/25-previewmedium-lillet_spring_2025_15071_r.jpg",
     "products": [
       "/images/brands/lillet/23-lillet-5_stripes-logotype-rgb.png",
       "/images/brands/lillet/25-previewmedium-lillet_spring_2025_15071_r.jpg",

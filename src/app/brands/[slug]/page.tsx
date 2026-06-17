@@ -29,7 +29,7 @@ export default async function BrandDetailPage({ params }: { params: Promise<{ sl
       {/* Hero */}
       <header className={styles.hero}>
         {brand.hero ? (
-          <Image className={styles.heroImg} src={brand.hero} alt={brand.name} fill sizes="100vw" priority />
+          <Image className={styles.heroImg} src={brand.hero} alt={brand.name} fill sizes="100vw" quality={90} priority />
         ) : (
           <div className={styles.heroFallback} aria-hidden />
         )}

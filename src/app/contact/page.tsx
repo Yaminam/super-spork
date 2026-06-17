@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageIntro from "@/components/site/PageIntro";
 import Reveal from "@/components/site/Reveal";
+import BrandHighlights from "@/components/site/BrandHighlights";
 import { JsonLd, breadcrumbSchema, webPageSchema } from "@/lib/seo/jsonld";
 import { CONTACT_CHANNELS } from "@/content/india";
 import { ORG } from "@/lib/site-config";
@@ -81,6 +82,8 @@ export default function ContactPage() {
           </Reveal>
         </div>
       </section>
+
+      <BrandHighlights />
     </article>
   );
 }

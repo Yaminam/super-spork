@@ -7,11 +7,17 @@ import EdgeReveal from "@/components/site/EdgeReveal";
 import SceneOrb from "@/components/site/SceneOrb";
 import CountUp from "@/components/site/CountUp";
 import { BrandWall, OperationsSection, HeritageTimeline, ClosingCta } from "@/components/sections/HomeSections";
+import BrandHighlights from "@/components/site/BrandHighlights";
 import { STATS } from "@/content/site";
 import { WHAT_WE_STAND_FOR } from "@/content/india";
+import { BRAND_HIGHLIGHTS } from "@/content/brand-highlights";
 import styles from "./Home.module.css";
 
 const PRINCIPLES = WHAT_WE_STAND_FOR.slice(0, 3);
+// curated set for the homepage band (three Indian-made, three international icons)
+const HOME_BRANDS = ["royal-stag", "blenders-pride", "chivas", "the-glenlivet", "absolut", "jameson"]
+  .map((slug) => BRAND_HIGHLIGHTS.find((b) => b.slug === slug))
+  .filter((b): b is (typeof BRAND_HIGHLIGHTS)[number] => Boolean(b));
 
 /** A small index that names where you are on the bottle as you scroll down. */
 function Chapter({ index, anatomy, children }: { index: string; anatomy: string; children: ReactNode }) {
@@ -107,6 +113,12 @@ export default function HomePage() {
           investors, media and talent. */}
       <BrandWall />
       <OperationsSection />
+      <BrandHighlights
+        eyebrow="Brands in focus"
+        title="The houses behind the business."
+        intro="From Indian-made icons to international houses, a factual look at the brands we build and the expressions that define each range."
+        items={HOME_BRANDS}
+      />
       <HeritageTimeline />
       <ClosingCta />
     </>

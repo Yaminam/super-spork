@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import Image from "next/image";
+import { motion, useScroll, useTransform, useSpring, useReducedMotion, useMotionValueEvent } from "framer-motion";
 import Reveal from "@/components/site/Reveal";
 import Magnetic from "@/components/site/Magnetic";
 import CountUp from "@/components/site/CountUp";
@@ -141,51 +142,86 @@ export function OperationsSection() {
   );
 }
 
-/** Illuminated heritage timeline with a gold rail that draws as you scroll. */
+// Heritage eras for the horizontal reel — each milestone paired with a real,
+// high-resolution maison/heritage image (all 2880×1234 or large lifestyle).
+const ERA_IMAGES = [
+  "/images/pernod/32-maison_belle_epoque.jpg",
+  "/images/pages/investors/00-pernod-20ricard-20hq.jpg",
+  "/images/brands/blenders-pride/24-brand-blenders-pride-rare-premium-whisky.jpg",
+  "/images/pages/group-history/00-img_2459m2.jpg",
+  "/images/pernod/28-nurturing_terroir1440x1080.jpg",
+  "/images/pernod/31-midleton_distillery.jpg",
+];
+const ERAS = INDIA_STORY.map((m, i) => ({ ...m, img: ERA_IMAGES[i] ?? ERA_IMAGES[0] }));
+
+/**
+ * "The Reel" — a pinned, cinematic horizontal timeline (synthesised from an
+ * audit of award-winning scrollytelling sites). Scrolling down pins the stage
+ * and scrubs a row of era panels sideways like a film reel; a gold progress
+ * rail and gliding years track position; the active panel gilds. The row width
+ * is measured so the last era lands flush, and on narrow screens it collapses
+ * to a vertical stack (measured travel becomes zero).
+ */
 export function HeritageTimeline() {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start center", "end center"] });
-  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const rowRef = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  const [dist, setDist] = useState(0);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const calc = () => {
+      if (rowRef.current) setDist(Math.max(0, rowRef.current.scrollWidth - window.innerWidth));
+    };
+    calc();
+    const t = setTimeout(calc, 300); // re-measure once fonts/images settle
+    window.addEventListener("resize", calc);
+    return () => { clearTimeout(t); window.removeEventListener("resize", calc); };
+  }, []);
+
+  const sp = useSpring(scrollYProgress, { stiffness: 90, damping: 30, mass: 0.4 });
+  const prog = reduce ? scrollYProgress : sp;
+  const x = useTransform(prog, [0, 1], [0, -dist]);
+
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    setActive(Math.min(ERAS.length - 1, Math.max(0, Math.round(v * (ERAS.length - 1)))));
+  });
+
   return (
-    <section className={`${s.section} ${s.heritageSection}`}>
-      <div className="ll-container">
-        <div className={s.head}>
-          <Reveal><p className="ll-eyebrow"><span>08</span> Heritage</p></Reveal>
-          <Reveal delay={0.05}><h2 className={s.title}>Our story, held in light.</h2></Reveal>
+    <section ref={ref} className={`${s.heritageSection} ${s.reel}`} aria-label="Our heritage">
+      <div className={s.reelStage}>
+        <div className={s.reelHead}>
+          <p className="ll-eyebrow"><span>08</span> Heritage</p>
+          <h2 className={s.reelTitle}>Our story, held in light.</h2>
         </div>
-        <div className={s.tlWrap} ref={ref}>
-          <div className={s.tlRail}>
-            <motion.div className={s.tlRailFill} style={{ scaleY }} />
-          </div>
-          {INDIA_STORY.map((m) => (
-            <motion.div
-              key={m.year}
-              className={s.tlBeat}
-              initial={{ opacity: 0, x: 56 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={VIEW}
-              transition={{ duration: 0.85, ease: EASE }}
-            >
-              <motion.span
-                className={s.tlDot}
-                aria-hidden
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={VIEW}
-                transition={{ duration: 0.5, delay: 0.15, ease: EASE }}
-              />
-              <motion.span
-                className={s.tlYear}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={VIEW}
-                transition={{ duration: 0.7, ease: EASE }}
-              >
-                {m.year}
-              </motion.span>
-              <p className={s.tlText}>{m.text}</p>
-            </motion.div>
+
+        <motion.div ref={rowRef} className={s.reelRow} style={{ x }}>
+          {ERAS.map((e, i) => (
+            <article key={e.year} className={s.reelPanel} data-active={i === active}>
+              <div className={s.reelMedia}>
+                <Image src={e.img} alt="" fill sizes="(max-width: 760px) 100vw, 56vw" quality={90} className={s.reelImg} />
+                <span className={s.reelShade} aria-hidden />
+              </div>
+              <div className={s.reelBody}>
+                <span className={s.reelNo}>{String(i + 1).padStart(2, "0")} — {String(ERAS.length).padStart(2, "0")}</span>
+                <span className={s.reelYear}>{e.year}</span>
+                <span className={s.reelBar} aria-hidden />
+                <p className={s.reelText}>{e.text}</p>
+              </div>
+            </article>
           ))}
+        </motion.div>
+
+        <div className={s.reelRail} aria-hidden>
+          <div className={s.reelRailTrack}>
+            <motion.div className={s.reelRailFill} style={{ scaleX: reduce ? 1 : scrollYProgress }} />
+          </div>
+          <div className={s.reelRailYears}>
+            {ERAS.map((e, i) => (
+              <span key={e.year} className={s.reelRailYear} data-active={i === active}>{e.year}</span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -174,6 +174,39 @@ export const CAREER_AREAS: CareerArea[] = [
   { name: "Finance & Strategy", text: "Steward value and shape long-term direction in a regulated, fast-moving category." },
   { name: "People & Culture", text: "Attract, grow and care for the people who make the business what it is." }];
 
+/** The three cardinal values that drive the culture (group-wide). */
+export const CAREER_VALUES: ValuePillar[] = [
+  { title: "Entrepreneurial spirit", body: "A decentralised house where teams are close to their markets and trusted to act like owners, with the freedom to decide and the drive to create." },
+  { title: "Mutual trust", body: "We give responsibility early and back our people to use it, building on candour, respect and the conviction that we go further together." },
+  { title: "Sense of ethics", body: "Doing things the right way, responsible by design, with integrity, fairness and the long term always in view." }];
+
+export interface CareerStat { value: string; label: string; }
+
+/** Life-here numbers, drawn from how the group describes itself. */
+export const CAREER_STATS: CareerStat[] = [
+  { value: "Créateurs", label: "De convivialité — our shared purpose" },
+  { value: "23 hrs", label: "Average learning per employee, each year" },
+  { value: "Coursera", label: "Full catalogue, open to every employee" },
+  { value: "1,400+", label: "Colleagues across India" }];
+
+export interface CareerLocation { city: string; detail: string; }
+
+/** Where the work happens across India. */
+export const CAREER_LOCATIONS: CareerLocation[] = [
+  { city: "Gurugram", detail: "Corporate headquarters at Building 8C, DLF Cyber City — designed around the power of togetherness." },
+  { city: "Mumbai", detail: "A second corporate hub at the heart of India's commercial capital." },
+  { city: "Nashik & Behror", detail: "Flagship distilleries and bottling, where our Indian whiskies are made." },
+  { city: "Nationwide", detail: "Sales and commercial teams across more than thirty sites and every region." }];
+
+export interface HiringStep { step: string; title: string; text: string; }
+
+/** What applying here looks like, end to end. */
+export const HIRING_STEPS: HiringStep[] = [
+  { step: "01", title: "Apply", text: "Share your details and where you would like to make an impact. It takes a few minutes." },
+  { step: "02", title: "Conversation", text: "Our talent team reviews your profile and reaches out for an introductory conversation." },
+  { step: "03", title: "Meet the team", text: "Interviews with the people you would work alongside — a two-way fit, in our convivial style." },
+  { step: "04", title: "Welcome", text: "An offer, onboarding, and ownership from day one as you join the house." }];
+
 export interface ContactChannel {
   audience: string;
   detail: string;

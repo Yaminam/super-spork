@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageIntro from "@/components/site/PageIntro";
 import Reveal from "@/components/site/Reveal";
+import BrandHighlights from "@/components/site/BrandHighlights";
 import { JsonLd, breadcrumbSchema, webPageSchema } from "@/lib/seo/jsonld";
 import { ARTICLES, formatDate } from "@/content/news";
 import styles from "./news.module.css";
@@ -49,6 +50,7 @@ export default function NewsPage() {
           </ul>
         </div>
       </section>
+      <BrandHighlights />
     </>
   );
 }

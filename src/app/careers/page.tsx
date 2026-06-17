@@ -1,13 +1,22 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/site/Reveal";
 import Faq from "@/components/site/Faq";
 import Marquee from "@/components/site/Marquee";
 import PhotoBreak from "@/components/site/PhotoBreak";
+import CareersForm from "@/components/site/CareersForm";
+import BrandHighlights from "@/components/site/BrandHighlights";
 import { JsonLd, breadcrumbSchema, webPageSchema } from "@/lib/seo/jsonld";
 import { PAGES } from "@/content/pages";
-import { EMPLOYER_PILLARS, CAREER_AREAS, CAREERS_FAQS } from "@/content/india";
+import {
+  EMPLOYER_PILLARS,
+  CAREER_AREAS,
+  CAREERS_FAQS,
+  CAREER_VALUES,
+  CAREER_STATS,
+  CAREER_LOCATIONS,
+  HIRING_STEPS,
+} from "@/content/india";
 import styles from "./careers.module.css";
 
 const page = PAGES.careers;
@@ -40,7 +49,7 @@ export default function CareersPage() {
 
       <header className={styles.hero}>
         {hero ? (
-          <Image className={styles.heroImg} src={hero} alt="Working at Pernod Ricard India" fill sizes="100vw" priority />
+          <Image className={styles.heroImg} src={hero} alt="Working at Pernod Ricard India" fill sizes="100vw" quality={90} priority />
         ) : (
           <div className={styles.heroFallback} aria-hidden />
         )}
@@ -55,8 +64,44 @@ export default function CareersPage() {
               wider Pernod Ricard group.
             </p>
           </Reveal>
+          <Reveal delay={0.15}>
+            <a href="#apply" className={styles.heroCta}>Submit your interest <span aria-hidden>→</span></a>
+          </Reveal>
         </div>
       </header>
+
+      {/* Life-here numbers, drawn from the group */}
+      <section className={styles.statsBand}>
+        <div className="ll-container">
+          <ul className={styles.statsRow}>
+            {CAREER_STATS.map((s) => (
+              <li className={styles.stat} key={s.label}>
+                <span className={styles.statValue}>{s.value}</span>
+                <span className={styles.statLabel}>{s.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Cardinal values */}
+      <section className={`ll-section ${styles.valuesSec}`}>
+        <div className="ll-container">
+          <div className={styles.head}>
+            <Reveal><p className="ll-eyebrow"><span>·</span> What drives us</p></Reveal>
+            <Reveal delay={0.05}><h2 className={`ll-display ${styles.headTitle}`}>Three values, lived every day.</h2></Reveal>
+          </div>
+          <ul className={styles.values}>
+            {CAREER_VALUES.map((v, i) => (
+              <Reveal as="li" className={styles.value} key={v.title} delay={(i % 3) * 0.06}>
+                <span className={styles.valueNo}>{String(i + 1).padStart(2, "0")}</span>
+                <h3 className={styles.valueName}>{v.title}</h3>
+                <p className={styles.valueText}>{v.body}</p>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       {/* Employer pillars */}
       <section className={`ll-section ${styles.pillarsSec}`}>
@@ -107,7 +152,7 @@ export default function CareersPage() {
       </section>
 
       <PhotoBreak
-        src="/images/pernod/23-originalsizejpeg-employer_brand_the_island_2023_7.jpg"
+        src="/images/pages/group-history/00-img_2459m2.jpg"
         eyebrow="Life here"
         caption="A place to grow, with brands worth building."
         alt="The workplace"
@@ -115,16 +160,70 @@ export default function CareersPage() {
 
       {band && (
         <section className={styles.bandSec}>
-          <Image className={styles.bandImg} src={band} alt="Life at Pernod Ricard India" fill sizes="100vw" />
+          <Image className={styles.bandImg} src={band} alt="Life at Pernod Ricard India" fill sizes="100vw" quality={90} />
           <span className={styles.bandShade} />
           <div className={`ll-container ${styles.bandInner}`}>
             <Reveal><p className={`ll-display ${styles.bandQuote}`}>Great brands are built by people who are trusted to lead.</p></Reveal>
             <Reveal delay={0.06}>
-              <Link href="/contact" className={styles.cta}>Talk to our talent team <span aria-hidden>→</span></Link>
+              <a href="#apply" className={styles.cta}>Submit your interest <span aria-hidden>→</span></a>
             </Reveal>
           </div>
         </section>
       )}
+
+      {/* Where you'd work */}
+      <section className={`ll-section ${styles.locsSec}`}>
+        <div className="ll-container">
+          <div className={styles.head}>
+            <Reveal><p className="ll-eyebrow"><span>·</span> Where you&apos;d work</p></Reveal>
+            <Reveal delay={0.05}><h2 className={`ll-display ${styles.headTitle}`}>Hubs and houses across India.</h2></Reveal>
+          </div>
+          <ul className={styles.locs}>
+            {CAREER_LOCATIONS.map((l, i) => (
+              <Reveal as="li" className={styles.loc} key={l.city} delay={(i % 2) * 0.06}>
+                <h3 className={styles.locCity}>{l.city}</h3>
+                <p className={styles.locText}>{l.detail}</p>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Application form */}
+      <section id="apply" className={`ll-section ${styles.applySec}`}>
+        <div className="ll-container">
+          <div className={styles.applyGrid}>
+            <div className={styles.applyIntro}>
+              <Reveal><p className="ll-eyebrow"><span>·</span> Join us</p></Reveal>
+              <Reveal delay={0.05}><h2 className={`ll-display ${styles.headTitle}`}>Tell us where you&apos;d make an impact.</h2></Reveal>
+              <Reveal delay={0.1}>
+                <p className={styles.applyLede}>
+                  We&apos;re always interested in people who want to build. Share your details and the
+                  area you&apos;re drawn to, and our talent team will be in touch.
+                </p>
+              </Reveal>
+              <Reveal delay={0.15}>
+                <ol className={styles.steps}>
+                  {HIRING_STEPS.map((s) => (
+                    <li className={styles.step} key={s.step}>
+                      <span className={styles.stepNo}>{s.step}</span>
+                      <div>
+                        <h3 className={styles.stepTitle}>{s.title}</h3>
+                        <p className={styles.stepText}>{s.text}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </Reveal>
+            </div>
+            <div className={styles.applyForm}>
+              <CareersForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <BrandHighlights />
 
       <Faq items={CAREERS_FAQS} title="Working here, answered." eyebrow="Answers" />
     </article>

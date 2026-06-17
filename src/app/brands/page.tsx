@@ -4,8 +4,10 @@ import PageIntro from "@/components/site/PageIntro";
 import Reveal from "@/components/site/Reveal";
 import PhotoMarquee from "@/components/site/PhotoMarquee";
 import Spotlights from "@/components/site/Spotlights";
+import BrandHighlights from "@/components/site/BrandHighlights";
 import BrandWall from "./BrandWall";
 import { BRAND_BY_SLUG } from "@/content/brands-detail";
+import { BRAND_HIGHLIGHTS } from "@/content/brand-highlights";
 import { JsonLd, breadcrumbSchema, webPageSchema, brandsSchema } from "@/lib/seo/jsonld";
 import { INDIA_BRANDS } from "@/content/india";
 import styles from "./brands.module.css";
@@ -60,6 +62,12 @@ export default function BrandsPage() {
           <Spotlights />
         </div>
       </section>
+
+      {/* Brand highlights — real product expressions across the portfolio */}
+      <BrandHighlights
+        items={BRAND_HIGHLIGHTS}
+        intro="A factual look at the houses we make and market in India, and the expressions that define each range. Presented in a corporate context, without pricing or promotion."
+      />
 
       {/* India-first corporate portfolio */}
       <section className={`ll-section ${styles.portfolioSec}`}>

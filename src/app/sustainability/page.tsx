@@ -6,6 +6,7 @@ import Faq from "@/components/site/Faq";
 import CountUp from "@/components/site/CountUp";
 import Marquee from "@/components/site/Marquee";
 import PhotoBreak from "@/components/site/PhotoBreak";
+import BrandHighlights from "@/components/site/BrandHighlights";
 import { JsonLd, breadcrumbSchema, webPageSchema } from "@/lib/seo/jsonld";
 import { PAGES } from "@/content/pages";
 import {
@@ -52,7 +53,7 @@ export default function SustainabilityPage() {
       {/* Hero */}
       <header className={styles.hero}>
         {page?.hero ? (
-          <Image className={styles.heroImg} src={page.hero} alt="Pernod Ricard India sustainability" fill sizes="100vw" priority />
+          <Image className={styles.heroImg} src={page.hero} alt="Pernod Ricard India sustainability" fill sizes="100vw" quality={90} priority />
         ) : (
           <div className={styles.heroFallback} aria-hidden />
         )}
@@ -158,6 +159,8 @@ export default function SustainabilityPage() {
           </Reveal>
         </div>
       </section>
+
+      <BrandHighlights />
 
       {/* FAQ */}
       <Faq items={RESPONSIBLE_FAQS} title="Sustainability & responsibility, answered." eyebrow="Answers" />

@@ -51,7 +51,7 @@
 }
 .statsRow {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: clamp(1.5rem, 4vw, 3rem);
 }
 .stat { display: flex; flex-direction: column; gap: 0.5rem; }
@@ -212,8 +212,8 @@
 }
 .cta:hover { gap: 0.9rem; }
 
-@media (min-width: 640px) {
-  .statsRow { grid-template-columns: repeat(3, 1fr); }
+@media (min-width: 860px) {
+  .statsRow { grid-template-columns: repeat(4, 1fr); }
 }
 @media (min-width: 760px) {
   .pillars { grid-template-columns: repeat(2, 1fr); }

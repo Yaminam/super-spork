@@ -1,0 +1,145 @@
+.form {
+  position: relative;
+  margin-top: clamp(1.75rem, 4vw, 2.75rem);
+  padding: clamp(1.5rem, 3.5vw, 2.75rem);
+  border: 1px solid var(--ll-line-soft);
+  border-radius: var(--ll-radius);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent), var(--ll-bg-2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 2.4vw, 1.5rem);
+}
+@media (min-width: 680px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+.fieldFull {
+  margin-top: clamp(1rem, 2.4vw, 1.5rem);
+}
+.fieldLabel {
+  font-size: var(--ll-text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ll-gold);
+}
+.req { color: var(--ll-gold-light); }
+
+.input {
+  width: 100%;
+  font-family: var(--ll-sans, inherit);
+  font-size: var(--ll-text-base);
+  color: var(--ll-ivory);
+  background: rgba(8, 8, 11, 0.6);
+  border: 1px solid var(--ll-line-soft);
+  border-radius: calc(var(--ll-radius) * 0.6);
+  padding: 0.85rem 1rem;
+  transition: border-color var(--ll-dur) var(--ll-ease-std), background-color var(--ll-dur) var(--ll-ease-std), box-shadow var(--ll-dur) var(--ll-ease-std);
+  appearance: none;
+}
+.input::placeholder { color: var(--ll-text-faint); }
+.input:hover { border-color: rgba(201, 169, 110, 0.4); }
+.input:focus {
+  outline: none;
+  border-color: var(--ll-gold);
+  background: rgba(12, 12, 16, 0.85);
+  box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.14);
+}
+select.input {
+  cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ll-gold) 50%), linear-gradient(135deg, var(--ll-gold) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 55%, calc(100% - 13px) 55%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 2.5rem;
+}
+select.input option { color: var(--ll-ivory); background: #0c0c10; }
+.textarea { resize: vertical; min-height: 7rem; line-height: 1.6; }
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-top: clamp(1.25rem, 3vw, 1.75rem);
+  font-size: var(--ll-text-sm);
+  line-height: 1.6;
+  color: var(--ll-text-muted);
+  cursor: pointer;
+}
+.consent input {
+  margin-top: 0.2rem;
+  width: 1.05rem;
+  height: 1.05rem;
+  accent-color: var(--ll-gold);
+  flex: none;
+}
+
+.errorLine {
+  font-size: var(--ll-text-xs);
+  color: #e6a6a0;
+  letter-spacing: 0.02em;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+.submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--ll-sans, inherit);
+  font-size: var(--ll-text-sm);
+  letter-spacing: 0.04em;
+  color: var(--ll-bg);
+  background: linear-gradient(180deg, var(--ll-gold-light), var(--ll-gold));
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.75rem;
+  cursor: pointer;
+  transition: gap var(--ll-dur) var(--ll-ease), transform var(--ll-dur) var(--ll-ease-std), box-shadow var(--ll-dur) var(--ll-ease-std);
+}
+.submit:hover {
+  gap: 1rem;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(201, 169, 110, 0.25);
+}
+.note { font-size: var(--ll-text-sm); color: var(--ll-text-muted); }
+.note a { color: var(--ll-gold-light); border-bottom: 1px solid rgba(201, 169, 110, 0.4); }
+
+/* success state */
+.done {
+  margin-top: clamp(1.75rem, 4vw, 2.75rem);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border: 1px solid rgba(201, 169, 110, 0.35);
+  border-radius: var(--ll-radius);
+  background: radial-gradient(80% 100% at 50% 0%, rgba(201, 169, 110, 0.08), transparent 70%), var(--ll-bg-2);
+  text-align: center;
+}
+.doneMark { display: block; font-size: 1.8rem; color: var(--ll-gold-light); margin-bottom: 0.75rem; }
+.doneTitle { font-family: var(--ll-serif); font-weight: 300; font-size: var(--ll-text-3xl); color: var(--ll-ivory); margin-bottom: 0.75rem; }
+.doneText { max-width: 52ch; margin: 0 auto; font-size: var(--ll-text-base); line-height: 1.7; color: var(--ll-text-muted); }
+.doneLink { color: var(--ll-gold-light); border-bottom: 1px solid rgba(201, 169, 110, 0.4); }
+.reset {
+  margin-top: 1.5rem;
+  font-size: var(--ll-text-sm);
+  color: var(--ll-ivory);
+  background: none;
+  border: 1px solid var(--ll-line-soft);
+  border-radius: 999px;
+  padding: 0.7rem 1.5rem;
+  cursor: pointer;
+  transition: border-color var(--ll-dur) var(--ll-ease-std), color var(--ll-dur) var(--ll-ease-std);
+}
+.reset:hover { border-color: var(--ll-gold); color: var(--ll-gold-light); }

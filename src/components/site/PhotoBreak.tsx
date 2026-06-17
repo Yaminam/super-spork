@@ -28,7 +28,7 @@ export default function PhotoBreak({
   return (
     <section ref={ref} className={styles.break}>
       <motion.div className={styles.media} style={{ y }}>
-        <Image src={src} alt={alt} fill sizes="100vw" className={styles.img} />
+        <Image src={src} alt={alt} fill sizes="100vw" quality={90} className={styles.img} />
       </motion.div>
       <div className={styles.shade} />
       {caption && (

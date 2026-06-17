@@ -6,6 +6,7 @@ import Faq from "@/components/site/Faq";
 import CountUp from "@/components/site/CountUp";
 import Marquee from "@/components/site/Marquee";
 import PhotoBreak from "@/components/site/PhotoBreak";
+import BrandHighlights from "@/components/site/BrandHighlights";
 import { JsonLd, breadcrumbSchema, webPageSchema } from "@/lib/seo/jsonld";
 import { OPERATIONS, INDIA_STATS, OPERATIONS_FAQS } from "@/content/india";
 import { absoluteUrl } from "@/lib/site-config";
@@ -115,6 +116,8 @@ export default function OperationsPage() {
           </Reveal>
         </div>
       </section>
+
+      <BrandHighlights />
 
       <Faq items={OPERATIONS_FAQS} title="Operations, answered." eyebrow="Answers" />
     </article>

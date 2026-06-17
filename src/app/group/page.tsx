@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageIntro from "@/components/site/PageIntro";
 import PhotoBreak from "@/components/site/PhotoBreak";
+import BrandHighlights from "@/components/site/BrandHighlights";
 import Reveal from "@/components/site/Reveal";
 import { JsonLd, breadcrumbSchema, webPageSchema } from "@/lib/seo/jsonld";
 import CountUp from "@/components/site/CountUp";
@@ -73,10 +74,10 @@ export default function GroupPage() {
       </section>
 
       <PhotoBreak
-        src="/images/pernod/103-the-island_2880x1234.jpg"
+        src="/images/pernod/28-nurturing_terroir1440x1080.jpg"
         eyebrow="Provenance"
         caption="A global house of brands, with roots deep in India."
-        alt="The Island, Pernod Ricard's campus"
+        alt="Nurturing the terroir"
       />
 
       {/* What we stand for */}
@@ -144,6 +145,8 @@ export default function GroupPage() {
           </ul>
         </div>
       </section>
+
+      <BrandHighlights />
     </article>
   );
 }
