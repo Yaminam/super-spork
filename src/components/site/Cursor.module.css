@@ -2,6 +2,9 @@
   position: fixed;
   top: 0;
   left: 0;
+  /* explicit size so centring is deterministic (no shrink-to-fit ambiguity) */
+  width: 22px;
+  height: 32px;
   z-index: 99999;
   pointer-events: none;
   will-change: transform;
@@ -9,12 +12,16 @@
 }
 .glass svg {
   display: block;
+  width: 100%;
+  height: 100%;
   filter: drop-shadow(0 3px 7px rgba(0, 0, 0, 0.55));
-  /* tipped, as if mid-pour; pivot at centre so it stays on the pointer */
-  transform: rotate(-16deg);
+  transform: rotate(-12deg);
   transform-origin: 50% 50%;
 }
-/* precise hit-point dot at the true pointer position */
+.active {
+  scale: 1.15;
+}
+/* precise hit-point dot at the true pointer */
 .dot {
   position: fixed;
   top: 0;
@@ -28,9 +35,6 @@
   z-index: 100000;
   will-change: transform;
 }
-.active {
-  scale: 1.12;
-}
 .drop {
   position: fixed;
   top: 0;
@@ -38,6 +42,6 @@
   border-radius: 50%;
   pointer-events: none;
   z-index: 99998;
-  background: radial-gradient(circle at 38% 32%, #7a1226, #3f0a16 74%);
+  background: radial-gradient(circle at 38% 32%, #e6b25a, #9a5a16 74%);
   will-change: transform, opacity;
 }
