@@ -105,36 +105,42 @@
   font-size: var(--ll-text-sm);
   line-height: 1.6;
   color: var(--ll-text-muted);
-  margin-bottom: 1.1rem;
+  margin-bottom: 1rem;
 }
-
-.products { list-style: none; margin: auto 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; }
-.product {
-  position: relative;
-  padding-left: 1.1rem;
-  border-top: 1px solid transparent;
-}
-.product::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.5em;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--ll-gold);
-  box-shadow: 0 0 8px 1px rgba(201, 169, 110, 0.5);
-}
-.pName {
-  display: block;
+.serve {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: auto 0 0;
+  padding: 0.6rem 0.85rem;
+  border-left: 2px solid var(--ll-gold);
+  background: linear-gradient(90deg, rgba(201, 169, 110, 0.08), transparent);
+  border-radius: 0 var(--ll-radius) var(--ll-radius) 0;
   font-family: var(--ll-serif);
-  font-size: var(--ll-text-base);
+  font-size: var(--ll-text-sm);
+  line-height: 1.5;
   color: var(--ll-ivory);
 }
-.pNote {
-  display: block;
-  margin-top: 0.15rem;
+.serveLabel {
+  font-family: var(--ll-mono);
   font-size: var(--ll-text-xs);
-  line-height: 1.5;
-  color: var(--ll-text-muted);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ll-gold);
 }
+
+/* product expressions as compact chips */
+.products { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.product {
+  font-family: var(--ll-serif);
+  font-size: var(--ll-text-sm);
+  color: var(--ll-ivory);
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--ll-line-soft);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.02);
+  white-space: nowrap;
+  transition: border-color var(--ll-dur) var(--ll-ease-std), color var(--ll-dur) var(--ll-ease-std);
+}
+.card:hover .product { border-color: rgba(201, 169, 110, 0.35); }

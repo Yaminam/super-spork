@@ -19,6 +19,8 @@ export interface BrandHighlight {
   origin: string;
   since: string;
   line: string;
+  /** The brand's signature / most-associated serve. */
+  serve: string;
   logo?: string;
   products: BrandExpression[];
 }
@@ -31,6 +33,7 @@ export const BRAND_HIGHLIGHTS: BrandHighlight[] = [
     origin: "India",
     since: "1995",
     line: "One of India's largest-selling whisky brands, locally produced since 1995 and part of the portfolio since 2001.",
+    serve: "Neat, or tall with chilled soda.",
     logo: "/images/pernod/96-royal-stag-logo-240.png",
     products: [
       { name: "Royal Stag", note: "The core blend of Indian grain spirits and imported Scotch malts." },
@@ -45,6 +48,7 @@ export const BRAND_HIGHLIGHTS: BrandHighlight[] = [
     origin: "India",
     since: "1995",
     line: "A leading Indian premium whisky, blending Indian grain spirits with imported Scotch malts.",
+    serve: "Neat, or on the rocks.",
     logo: "/images/pernod/87-blenders-pride_240.png",
     products: [
       { name: "Rare Premium Whisky", note: "The flagship blend." },
@@ -59,6 +63,7 @@ export const BRAND_HIGHLIGHTS: BrandHighlight[] = [
     origin: "Scotland · bottled in India",
     since: "1960s",
     line: "A blended Scotch created by Seagram in the 1960s, part of the portfolio since 2001 and locally bottled for India.",
+    serve: "On the rocks, or with soda.",
     logo: "/images/pernod/85-100-pipers_240.png",
     products: [
       { name: "100 Pipers Deluxe", note: "The core blended Scotch expression." },
@@ -73,6 +78,7 @@ export const BRAND_HIGHLIGHTS: BrandHighlight[] = [
     origin: "Scotland · Speyside",
     since: "1909",
     line: "A blended Scotch from Chivas Brothers, with roots tracing to an 1801 Aberdeen merchant house.",
+    serve: "Neat, on the rocks, or in a Highball.",
     logo: "/images/pernod/38-chivas_logo_blue_240.png",
     products: [
       { name: "Chivas Regal 12", note: "The flagship 12-year-old blend." },
@@ -88,6 +94,7 @@ export const BRAND_HIGHLIGHTS: BrandHighlight[] = [
     origin: "Scotland · Speyside",
     since: "1824",
     line: "A Speyside single malt from a distillery established in 1824, among the first licensed in the region.",
+    serve: "Neat, or with a few drops of water.",
     logo: "/images/pernod/48-the-glenlivet_logo_240.png",
     products: [
       { name: "Founder's Reserve", note: "A no-age-statement single malt at 40% ABV." },
@@ -103,6 +110,7 @@ export const BRAND_HIGHLIGHTS: BrandHighlight[] = [
     origin: "Sweden · Åhus",
     since: "1979",
     line: "A Swedish vodka produced in Åhus from local winter wheat by continuous distillation; in the group since 2008.",
+    serve: "In a Vodka Soda, or a Bloody Mary.",
     logo: "/images/pernod/35-brand-absolut-logo-240px_1.png",
     products: [
       { name: "Absolut Original", note: "The unflavoured, single-source Swedish vodka." },
@@ -118,6 +126,7 @@ export const BRAND_HIGHLIGHTS: BrandHighlight[] = [
     origin: "Ireland · Midleton",
     since: "1780",
     line: "A triple-distilled Irish whiskey founded in Dublin in 1780, today produced at Midleton, County Cork.",
+    serve: "Neat, or a Jameson, Ginger & Lime.",
     logo: "/images/pernod/40-brand-jameson-logo-240px.png",
     products: [
       { name: "Jameson Original", note: "The core triple-distilled blend." },
@@ -133,6 +142,7 @@ export const BRAND_HIGHLIGHTS: BrandHighlight[] = [
     origin: "Scotland",
     since: "1827",
     line: "A blended Scotch with roots in an 1827 Edinburgh grocery, awarded a royal warrant in 1895.",
+    serve: "On the rocks, or with soda.",
     logo: "/images/pernod/36-ballantines_logo_240.png",
     products: [
       { name: "Ballantine's Finest", note: "The flagship blend, first launched in 1910." },
@@ -148,6 +158,7 @@ export const BRAND_HIGHLIGHTS: BrandHighlight[] = [
     origin: "England · London",
     since: "1863",
     line: "A London dry gin distilled in London from James Burrough's recipe, with distillery heritage dating to 1863.",
+    serve: "In a classic Gin & Tonic.",
     logo: "/images/pernod/37-beefeater-logo_240.png",
     products: [
       { name: "London Dry", note: "The classic, from the original Burrough recipe." },
@@ -163,6 +174,7 @@ export const BRAND_HIGHLIGHTS: BrandHighlight[] = [
     origin: "Scotland · Strathisla",
     since: "1953",
     line: "A luxury blended Scotch from Chivas Brothers, created in 1953 for the coronation; a minimum of 21 years of age.",
+    serve: "Neat, savoured slowly.",
     logo: "/images/pernod/47-brand-royal-salute-logo-240px.png",
     products: [
       { name: "21 Year Old — Signature Blend", note: "The flagship, in a sapphire-blue flagon." },
