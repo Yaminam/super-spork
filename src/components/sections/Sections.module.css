@@ -204,13 +204,13 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* three stacked zones — header, panel row, rail — so the panels are laid out
+     BELOW the heading and can never slide under it, whatever the title height */
+  padding: clamp(1.5rem, 4vh, 2.75rem) 0;
+  box-sizing: border-box;
 }
 .reelHead {
-  position: absolute;
-  top: clamp(1.5rem, 4vw, 3rem);
-  left: 0;
-  right: 0;
+  flex: none;
   z-index: 3;
   padding-inline: clamp(1.25rem, 5vw, 5rem);
   pointer-events: none;
@@ -228,6 +228,8 @@
 .reelRow {
   display: flex;
   align-items: center;
+  flex: 1 1 auto;
+  min-height: 0;
   gap: clamp(1.25rem, 2.5vw, 2.25rem);
   padding-inline: clamp(1.25rem, 5vw, 5rem);
   will-change: transform;
@@ -235,8 +237,9 @@
 .reelPanel {
   position: relative;
   flex: 0 0 auto;
-  width: clamp(300px, 56vw, 760px);
-  height: min(64vh, 560px);
+  width: clamp(300px, 52vw, 720px);
+  height: 100%;
+  max-height: 560px;
   border-radius: var(--ll-radius);
   overflow: hidden;
   border: 1px solid var(--ll-line-soft);
@@ -282,11 +285,9 @@
   max-width: 42ch;
 }
 .reelRail {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: clamp(1.25rem, 3vw, 2.25rem);
+  flex: none;
   z-index: 3;
+  margin-top: clamp(1rem, 2.5vh, 1.75rem);
   padding-inline: clamp(1.25rem, 5vw, 5rem);
   pointer-events: none;
 }
@@ -317,8 +318,8 @@
     padding: clamp(3rem, 9vw, 5rem) clamp(1.25rem, 5vw, 2rem);
   }
   .reelHead { position: static; padding-inline: 0; margin-bottom: 1.75rem; }
-  .reelRow { flex-direction: column; padding-inline: 0; gap: 1.25rem; }
-  .reelPanel { width: 100%; height: 58vh; }
+  .reelRow { flex-direction: column; height: auto; padding-inline: 0; gap: 1.25rem; }
+  .reelPanel { width: 100%; height: 58vh; max-height: none; }
   .reelRail { display: none; }
 }
 
